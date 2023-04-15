@@ -16,16 +16,6 @@ import MenuItem from "@mui/material/MenuItem";
 // import AdbIcon from '@mui/icons-material/Adb';
 
 const pages = [
-	<Link className="no-underline" to="/customers">
-		Customers
-	</Link>,
-	<Link className="no-underline" to="/receipts">
-		Receipts
-	</Link>,
-
-	<Link className="no-underline" to="/dependents">
-		Dependents
-	</Link>,
 	<Link to="/Employees" className="no-underline">
 		Employees
 	</Link>,
@@ -41,12 +31,7 @@ const pages = [
 	<Link to="/Vehicles" className="no-underline">
 		Vehicles
 	</Link>,
-	<Link to="/Accomodation" className="no-underline">
-		Accomodation
-	</Link>,
-	<Link to="/AccBelongsTo" className="no-underline">
-		AccBelongsTo
-	</Link>,
+
 	<Link to="/EWorksIn" className="no-underline">
 		EWorksIn
 	</Link>,
@@ -58,16 +43,6 @@ const pages = [
 	</Link>,
 ];
 const settings = [
-	<Link className="no-underline" to="/customers">
-		Customers
-	</Link>,
-	<Link className="no-underline" to="/receipts">
-		Receipts
-	</Link>,
-
-	<Link className="no-underline" to="/dependents">
-		Dependents
-	</Link>,
 	<Link to="/Employees" className="no-underline">
 		Employees
 	</Link>,
@@ -80,15 +55,10 @@ const settings = [
 	<Link to="/Drives" className="no-underline">
 		Drives
 	</Link>,
-	<Link to="/Drives" className="no-underline">
+	<Link to="/Vehicles" className="no-underline">
 		Vehicles
 	</Link>,
-	<Link to="/Accomodation" className="no-underline">
-		Accomodation
-	</Link>,
-	<Link to="/AccBelongsTo" className="no-underline">
-		AccBelongsTo
-	</Link>,
+
 	<Link to="/EWorksIn" className="no-underline">
 		EWorksIn
 	</Link>,
@@ -99,7 +69,6 @@ const settings = [
 		PackageHas
 	</Link>,
 ];
-
 function ResponsiveAppBar() {
 	const [anchorElNav, setAnchorElNav] = React.useState();
 	const [anchorElUser, setAnchorElUser] = React.useState();
@@ -204,7 +173,10 @@ function ResponsiveAppBar() {
 
 							// </Button>
 						))}
-						<button onClick={localStorage.removeItem("signIn") }> LOG OUT </button>
+						{/* <button onClick={localStorage.removeItem("signIn")}>
+							{" "}
+							LOG OUT{" "}
+						</button> */}
 					</Box>
 
 					<Box sx={{ flexGrow: 0 }}>

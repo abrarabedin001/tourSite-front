@@ -26,18 +26,14 @@ const pages = [
 	<Link className="no-underline" to="/dependents">
 		Dependents
 	</Link>,
-	<Link to="/Employees" className="no-underline">
-		Employees
-	</Link>,
+
 	<Link to="/Packages" className="no-underline">
 		Packages
 	</Link>,
 	<Link to="/Locations" className="no-underline">
 		Locations
 	</Link>,
-	<Link to="/Drives" className="no-underline">
-		Drives
-	</Link>,
+
 	<Link to="/Vehicles" className="no-underline">
 		Vehicles
 	</Link>,
@@ -47,9 +43,7 @@ const pages = [
 	<Link to="/AccBelongsTo" className="no-underline">
 		AccBelongsTo
 	</Link>,
-	<Link to="/EWorksIn" className="no-underline">
-		EWorksIn
-	</Link>,
+
 	<Link to="/CustBuys" className="no-underline">
 		CustBuys
 	</Link>,
@@ -68,19 +62,15 @@ const settings = [
 	<Link className="no-underline" to="/dependents">
 		Dependents
 	</Link>,
-	<Link to="/Employees" className="no-underline">
-		Employees
-	</Link>,
+
 	<Link to="/Packages" className="no-underline">
 		Packages
 	</Link>,
 	<Link to="/Locations" className="no-underline">
 		Locations
 	</Link>,
-	<Link to="/Drives" className="no-underline">
-		Drives
-	</Link>,
-	<Link to="/Drives" className="no-underline">
+
+	<Link to="/Vehicles" className="no-underline">
 		Vehicles
 	</Link>,
 	<Link to="/Accomodation" className="no-underline">
@@ -89,9 +79,7 @@ const settings = [
 	<Link to="/AccBelongsTo" className="no-underline">
 		AccBelongsTo
 	</Link>,
-	<Link to="/EWorksIn" className="no-underline">
-		EWorksIn
-	</Link>,
+
 	<Link to="/CustBuys" className="no-underline">
 		CustBuys
 	</Link>,
@@ -204,7 +192,7 @@ function ResponsiveAppBar() {
 
 							// </Button>
 						))}
-						<button onClick={localStorage.removeItem("signIn") }> LOG OUT </button>
+						{/* <button onClick={localStorage.removeItem("signIn") }> LOG OUT </button> */}
 					</Box>
 
 					<Box sx={{ flexGrow: 0 }}>
