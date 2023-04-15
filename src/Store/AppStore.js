@@ -1,18 +1,36 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 
-export const UserContext = createContext({
-	mode: "None",
-});
+let changeMode = (mode) => {};
+
+export const UserContext = createContext();
 
 export function AppStore(props) {
-	const changeMode = (mode) => {
-		return 0;
+	let s1 = {
+		mode: "user",
 	};
-
-	let mode = { mode: "user" };
+	const [a, setMode] = useState(s1);
+	const changeMode = (name) => {
+		let b = { mode: name };
+		setMode({ ...a, ...b });
+		console.log("kaj  kore");
+		console.log(a.mode);
+		console.log("kaj  kore");
+	};
+	const changeMode2 = (name) => {
+		let b = { mode: "Employee" };
+		setMode({ ...a, ...b });
+		console.log("kaj  kore 2");
+		console.log(a.mode);
+		console.log("kaj  kore 2");
+	};
+	useEffect(() => {
+		console.log("Mode updated:", a.mode);
+	}, [a.mode]);
 
 	return (
-		<UserContext.Provider value={mode}>{props.children}</UserContext.Provider>
+		<UserContext.Provider value={{ a, changeMode, changeMode2 }}>
+			{props.children}
+		</UserContext.Provider>
 	);
 }
