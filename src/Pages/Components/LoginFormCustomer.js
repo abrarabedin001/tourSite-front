@@ -39,13 +39,14 @@ export default function LoginForm(props) {
 			const resp = await axios.get(link);
 			let customer = resp.data.data[0];
 			if (customer) {
-				ctx.changeMode("Customer");
+				ctx.changeMode("Customer", customer.Id);
 				console.log("tuns");
 			}
 		} catch (err) {
 			// Handle Error Here
 			console.error(err);
 		}
+		window.location.reload(true);
 	};
 
 	const handleSubmit = () => {
@@ -57,7 +58,7 @@ export default function LoginForm(props) {
 		<div className="m-5">
 			{/* onSubmit={handleSubmit} */}
 			<h1 className="bold font-bold text-2xl mb-3 text-white">
-				Customer Sign Up
+				Customer Sign In
 			</h1>
 			<div className="max-w-[500px] bg-blue-500 flex flex-wrap space-between flex-col rounded font-bold text-md text-white">
 				<div

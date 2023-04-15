@@ -15,7 +15,7 @@ export default function LoginForm(props) {
 	// let Keys = props.key
 	// props.state
 	// props.setState
-	//   props.setVisible
+
 	const toapi = "http://localhost:3001/authenticate";
 	const [Value, setValue] = useState({});
 	const [Data, setData] = useState([]);
@@ -43,31 +43,26 @@ export default function LoginForm(props) {
 				console.log(ctx);
 				if (employee.Id == "01") {
 					console.log("1");
-					ctx.changeMode("Admin");
+					ctx.changeMode("Admin", employee.Id);
 				} else {
 					console.log("2");
-					ctx.changeMode("Employee");
+					ctx.changeMode("Employee", employee.Id);
 				}
 				console.log(ctx.a["mode"]);
-				//props.setVisible(true);
 			}
+			window.location.reload(true);
 		} catch (err) {
-			// Handle Error Here
 			console.error(err);
 		}
 	};
 
 	const handleSubmit = () => {
-		// e.preventDefault()
 		console.log(IdRef.current.value, PasswordRef.current.value);
 		sendValue(Value);
-
-		// props.setState(!props.State)
 	};
 
 	return (
 		<div className="m-5 ">
-			{/* onSubmit={handleSubmit} */}
 			<h1 className="bold font-bold text-2xl mb-3 text-white">
 				Employee Sign in
 			</h1>

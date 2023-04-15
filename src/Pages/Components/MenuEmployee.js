@@ -16,10 +16,6 @@ import MenuItem from "@mui/material/MenuItem";
 // import AdbIcon from '@mui/icons-material/Adb';
 
 const pages = [
-	
-
-
-
 	<Link to="/Employees" className="no-underline">
 		Employees
 	</Link>,
@@ -47,10 +43,6 @@ const pages = [
 	</Link>,
 ];
 const settings = [
-	
-
-
-
 	<Link to="/Employees" className="no-underline">
 		Employees
 	</Link>,
@@ -181,6 +173,10 @@ function ResponsiveAppBar() {
 
 							// </Button>
 						))}
+						{/* <button onClick={localStorage.removeItem("signIn")}>
+							{" "}
+							LOG OUT{" "}
+						</button> */}
 					</Box>
 
 					<Box sx={{ flexGrow: 0 }}>

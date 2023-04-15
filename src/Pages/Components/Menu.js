@@ -204,6 +204,7 @@ function ResponsiveAppBar() {
 
 							// </Button>
 						))}
+						<button onClick={localStorage.removeItem("signIn") }> LOG OUT </button>
 					</Box>
 
 					<Box sx={{ flexGrow: 0 }}>

@@ -31,30 +31,37 @@ import MenuEmployee from "./MenuEmployee";
 
 function Header() {
 	let ctx = useContext(UserContext);
-	useEffect(() => {
-		//ctx.changeMode2()
-	}, []);
-	
-	console.log("Header")
-	
-	console.log(ctx.a["mode"]);
+	const signIn = JSON.parse(localStorage.getItem("signIn"));
+	const handleLogOut = () => {
+		localStorage.removeItem("signIn");
+		window.location.reload(true);
+	};
+	console.log("signIn:  ");
+	if (signIn) {
+		console.log(signIn);
+	}
+	useEffect(() => {}, [ctx]);
+
 	let [show, setShow] = useState("None");
 	const [visible, setVisible] = useState(false);
+
 	console.log("Header");
 	console.log(ctx.a["mode"]);
 
 	return (
-
-			<div className="App ">
-				{ctx.a["mode"] == "Admin" ? <MenuAdmin /> : ""}
-				{ctx.a["mode"] == "user" ? "LOL" : ""}
-				{ctx.a["mode"] == "Customer" ? <MenuCustomer /> : ""}
-				{ctx.a["mode"] == "Employee" ? <MenuEmployee /> : ""}
-
+		<div className="App ">
+			{signIn ? (
+				<div>
+					{signIn.mode == "Admin" ? <MenuAdmin /> : ""}
+					{signIn.mode == "Customer" ? <MenuCustomer /> : ""}
+					{signIn.mode == "Employee" ? <MenuEmployee /> : ""}
+				</div>
+			) : (
+				" "
+			)}
+			{signIn ? (
 				<header className="App-header">
 					<Container>
-						
-
 						<Routes>
 							<Route path="/Customers" element={<Customers />} />
 							<Route path="/Receipts" element={<Receipts />} />
@@ -70,18 +77,29 @@ function Header() {
 							<Route path="/CustBuys" element={<CustBuys />} />
 							<Route path="/PackageHas" element={<PackageHas />} />
 						</Routes>
-						
-						
 					</Container>
-				</header>
-				<div className="flex justify-center flex-row">
-					{console.log(show)}
-					{ctx.a["mode"] == "user"? <LoginForm setVisible={setVisible} /> : ""}
-					{ctx.a["mode"] == "user"?  <LoginFormCustomer setVisible={setVisible} /> : ""}
-					{ctx.a["mode"] == "user"? <CustomerSignUp setVisible={setVisible} /> : ""}
-				</div>
-			</div>
 
+					<button
+						className="w-[120px] bg-white p-3 m-3 font-bold"
+						onClick={handleLogOut}
+					>
+						Log out
+					</button>
+				</header>
+			) : (
+				" "
+			)}
+
+			{!signIn ? (
+				<div className="flex justify-center flex-row">
+					<LoginForm setVisible={setVisible} />
+					<LoginFormCustomer setVisible={setVisible} />
+					<CustomerSignUp setVisible={setVisible} />
+				</div>
+			) : (
+				" "
+			)}
+		</div>
 	);
 }
 

@@ -17,6 +17,7 @@ export default function DenseTable(props) {
 	// props.setState
 	let rows = props.Data;
 	let toapi = props.toapi;
+	const signIn = JSON.parse(localStorage.getItem("signIn"));
 
 	let ctx = useContext(UserContext);
 
@@ -104,7 +105,7 @@ export default function DenseTable(props) {
 								</TableCell>
 							))}
 							<TableCell align="right">
-								{ctx.a.mode == "Admin" ? (
+								{signIn?.mode == "Admin" ? (
 									<button
 										className="p-2 m-2 bg-red-700 rounded-lg text-white font-bold"
 										onClick={(e, rows) => deleteHandler(e, row)}

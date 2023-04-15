@@ -8,28 +8,26 @@ export const UserContext = createContext();
 export function AppStore(props) {
 	let s1 = {
 		mode: "user",
+		id: "00",
 	};
 	const [a, setMode] = useState(s1);
-	const changeMode = (name) => {
-		let b = { mode: name };
+	const changeMode = (name, id) => {
+		let b = { mode: name, id: id };
 		setMode({ ...a, ...b });
 		console.log("kaj  kore");
 		console.log(a.mode);
 		console.log("kaj  kore");
 	};
-	const changeMode2 = (name) => {
-		let b = { mode: "Employee" };
-		setMode({ ...a, ...b });
-		console.log("kaj  kore 2");
-		console.log(a.mode);
-		console.log("kaj  kore 2");
-	};
+
 	useEffect(() => {
-		console.log("Mode updated:", a.mode);
-	}, [a.mode]);
+		console.log("Mode updated:", a);
+		if (a.mode != "user") {
+			localStorage.setItem("signIn", JSON.stringify(a));
+		}
+	}, [a]);
 
 	return (
-		<UserContext.Provider value={{ a, changeMode, changeMode2 }}>
+		<UserContext.Provider value={{ a, changeMode }}>
 			{props.children}
 		</UserContext.Provider>
 	);
