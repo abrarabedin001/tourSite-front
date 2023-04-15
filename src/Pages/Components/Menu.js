@@ -19,9 +19,7 @@ const pages = [
 	<Link className="no-underline" to="/customers">
 		Customers
 	</Link>,
-	<Link className="no-underline" to="/receipts">
-		Receipts
-	</Link>,
+	
 
 	<Link className="no-underline" to="/dependents">
 		Dependents
@@ -61,9 +59,7 @@ const settings = [
 	<Link className="no-underline" to="/customers">
 		Customers
 	</Link>,
-	<Link className="no-underline" to="/receipts">
-		Receipts
-	</Link>,
+	
 
 	<Link className="no-underline" to="/dependents">
 		Dependents

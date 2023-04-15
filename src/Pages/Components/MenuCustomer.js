@@ -19,12 +19,12 @@ const pages = [
 	<Link className="no-underline" to="/customers">
 		Customers
 	</Link>,
-	<Link className="no-underline" to="/receipts">
-		Receipts
-	</Link>,
 
 	<Link className="no-underline" to="/dependents">
 		Dependents
+	</Link>,
+	<Link to="/CustBuys" className="no-underline">
+		CustBuys
 	</Link>,
 
 	<Link to="/Packages" className="no-underline">
@@ -55,12 +55,12 @@ const settings = [
 	<Link className="no-underline" to="/customers">
 		Customers
 	</Link>,
-	<Link className="no-underline" to="/receipts">
-		Receipts
-	</Link>,
 
 	<Link className="no-underline" to="/dependents">
 		Dependents
+	</Link>,
+	<Link to="/CustBuys" className="no-underline">
+		CustBuys
 	</Link>,
 
 	<Link to="/Packages" className="no-underline">
@@ -80,9 +80,6 @@ const settings = [
 		AccBelongsTo
 	</Link>,
 
-	<Link to="/CustBuys" className="no-underline">
-		CustBuys
-	</Link>,
 	<Link to="/PackageHas" className="no-underline">
 		PackageHas
 	</Link>,
@@ -111,7 +108,6 @@ function ResponsiveAppBar() {
 		<AppBar position="static">
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
-					{/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
 					<Typography
 						variant="h6"
 						noWrap
@@ -151,13 +147,12 @@ function ResponsiveAppBar() {
 						>
 							{pages.map((page) => (
 								<MenuItem key={page} onClick={handleCloseNavMenu}>
-									{/* <Typography textAlign="center">{page}</Typography> */}
 									{page}
 								</MenuItem>
 							))}
 						</Menu>
 					</Box>
-					{/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
+
 					<Typography
 						variant="h5"
 						noWrap
@@ -178,21 +173,13 @@ function ResponsiveAppBar() {
 					</Typography>
 					<Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
 						{pages.map((page) => (
-							// <Button
-							//   key={page}
-							//   onClick={handleCloseNavMenu}
-							//   sx={{ my: 2, color: 'white', display: 'block' }}
-							// >
 							<div
 								className="p-2 m-2  trnasition hover:bg-blue-100 text-black font-bold duration-500  rounded"
 								key={page}
 							>
 								{page}
 							</div>
-
-							// </Button>
 						))}
-						{/* <button onClick={localStorage.removeItem("signIn") }> LOG OUT </button> */}
 					</Box>
 
 					<Box sx={{ flexGrow: 0 }}>

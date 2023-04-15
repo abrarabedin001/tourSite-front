@@ -6,7 +6,7 @@ import axios from "axios";
 
 // const api = "http://localhost:3001/employees"
 
-export default function Form(props) {
+export default function SignUp(props) {
 	const signIn = JSON.parse(localStorage.getItem("signIn"));
 	const api = props.api;
 	//props.toapi

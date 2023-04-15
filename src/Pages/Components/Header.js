@@ -12,10 +12,7 @@ import { EWorksIn } from "../EWorksIn";
 import { CustBuys } from "../CustBuys";
 import { PackageHas } from "../PackageHas";
 import { Dependents } from "../Dependents";
-import { Receipts } from "../Receipts";
 
-import { AppStore } from "../../Store/AppStore";
-// import { UserContext } from "./Store/AppStore";
 import { UserContext } from "../../Store/AppStore";
 // import Table from './Table';
 
@@ -64,7 +61,7 @@ function Header() {
 					<Container>
 						<Routes>
 							<Route path="/Customers" element={<Customers />} />
-							<Route path="/Receipts" element={<Receipts />} />
+
 							<Route path="/Dependents" element={<Dependents />} />
 							<Route path="/Employees" element={<Employees />} />
 							<Route path="/Packages" element={<Packages />} />

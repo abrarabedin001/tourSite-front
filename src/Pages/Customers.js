@@ -5,7 +5,7 @@ import Form from "./Components/Form";
 
 import axios from "axios";
 
-const api = "http://localhost:3001/customers";
+let api = "http://localhost:3001/customers";
 const toapi = "http://localhost:3001/customers";
 
 export function Customers() {
@@ -15,6 +15,13 @@ export function Customers() {
 	const [State, setState] = useState(false);
 	useEffect(() => {
 		async function getData() {
+			const signIn = JSON.parse(localStorage.getItem("signIn"));
+			if (signIn.mode == "Customer") {
+				// console.log("ki hoise");
+				console.log(signIn.id);
+				api = api + "/" + signIn.id;
+				console.log(api);
+			}
 			const res = await axios.get(api);
 			// console.log(res.data)
 			setKeys(Object.keys(res.data.data[0]));
