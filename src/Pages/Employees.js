@@ -1,47 +1,54 @@
+import { useEffect, useState, useRef } from "react";
+import * as React from "react";
+import Table from "./Components/Table";
+import Form from "./Components/Form";
 
-import { useEffect,useState,useRef } from 'react'
-import * as React from 'react';
-import Table from './Components/Table';
-import Form from './Components/Form';
+import axios from "axios";
 
-import axios from 'axios';
-
-const api = "http://localhost:3001/employees"
-const toapi = "http://localhost:3001/employees"
-
+let api = "http://localhost:3001/employees";
+const toapi = "http://localhost:3001/employees";
 
 export function Employees() {
+	const dataRef = useRef([]);
+	const [Data, setData] = useState([]);
+	const [Keys, setKeys] = useState([]);
+	const [State, setState] = useState(false);
+	useEffect(() => {
+		async function getData() {
+			const signIn = JSON.parse(localStorage.getItem("signIn"));
+			if (signIn.mode == "Employee") {
+				// console.log("ki hoise");
+				console.log(signIn.id);
+				api = api + "/" + signIn.id;
+				console.log(api);
+			}
 
-  const dataRef = useRef([])
-  const[Data,setData] = useState([]);
-  const[Keys,setKeys] = useState([]);
-  const[State,setState] = useState(false)
-  useEffect(
-    ()=>{
-     async function getData(){
-      
-      const res = await axios.get(api)
-      // console.log(res.data.data)
-      setKeys(Object.keys(res.data.data[0]))
-      dataRef.current = res.data.data
-      
-      setData(res.data.data)
-      
-     } 
-     getData()
-     
-     
-    }
-    ,[State]
+			const res = await axios.get(api);
+			// console.log(res.data.data)
+			setKeys(Object.keys(res.data.data[0]));
+			dataRef.current = res.data.data;
 
-    
-  )
-  return (
-    <div>
-      <Table Data={Data} keys={Keys} toapi={toapi} state={State} setState={setState} className=""/>
-      <Form api={api} toapi={toapi} data={Data} state={State} setState={setState} /> 
-    </div>
-  );
+			setData(res.data.data);
+		}
+		getData();
+	}, [State]);
+	return (
+		<div>
+			<Table
+				Data={Data}
+				keys={Keys}
+				toapi={toapi}
+				state={State}
+				setState={setState}
+				className=""
+			/>
+			<Form
+				api={api}
+				toapi={toapi}
+				data={Data}
+				state={State}
+				setState={setState}
+			/>
+		</div>
+	);
 }
-
-

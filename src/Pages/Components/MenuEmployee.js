@@ -19,6 +19,9 @@ const pages = [
 	<Link to="/Employees" className="no-underline">
 		Employees
 	</Link>,
+	<Link to="/EWorksIn" className="no-underline">
+		EWorksIn
+	</Link>,
 	<Link to="/Packages" className="no-underline">
 		Packages
 	</Link>,
@@ -32,9 +35,6 @@ const pages = [
 		Vehicles
 	</Link>,
 
-	<Link to="/EWorksIn" className="no-underline">
-		EWorksIn
-	</Link>,
 	<Link to="/CustBuys" className="no-underline">
 		CustBuys
 	</Link>,
@@ -170,13 +170,7 @@ function ResponsiveAppBar() {
 							>
 								{page}
 							</div>
-
-							// </Button>
 						))}
-						{/* <button onClick={localStorage.removeItem("signIn")}>
-							{" "}
-							LOG OUT{" "}
-						</button> */}
 					</Box>
 
 					<Box sx={{ flexGrow: 0 }}>
