@@ -113,7 +113,9 @@ export default function Form(props) {
 		sendValue(Value);
 
 		props.setState(!props.State);
-		window.location.reload(true);
+		setTimeout(() => {
+			window.location.reload(true);
+		}, 1000);
 	};
 
 	return (
