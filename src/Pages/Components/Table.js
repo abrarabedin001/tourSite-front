@@ -74,6 +74,20 @@ export default function DenseTable(props) {
 			console.error(err);
 		}
 	};
+  const delValues2 = async (Id1, Id2,Id3) => {
+		try {
+			const myArray = Id3.split("T");
+      Id3 = myArray[0]
+			let link = delapi + "/" + Id1 + "/" + Id2+"/"+Id3;
+
+			console.log(link);
+			console.log("delapi");
+			const resp = await axios.delete(link);
+		} catch (err) {
+			// Handle Error Here
+			console.error(err);
+		}
+	};
 
 	const updateHandler = (e, rows) => {
 		console.log(rows);
@@ -91,7 +105,7 @@ export default function DenseTable(props) {
 			link = props.toapi + "All/" + rows["Id"];
 		}
     else if(location === "/CustBuys"){
-			link = props.toapi + "All/" + rows["Cid"]+"/"+rows["Pid"]+"/"+rows["Start_date"];
+			link = props.toapi + "All/" + rows["Cid"]+"/"+rows["Pid"]+"/"+rows["Start_date"].split("T")[0];
 		}
 		props.setApi(link);
 		console.log("Aikhane");
@@ -124,7 +138,7 @@ export default function DenseTable(props) {
 		} else if (packages_has) {
 			delValues(rows["Lid"], rows["Pid"]);
 		} else if (customebuys) {
-			delValues(rows["Cid"], rows["Pid"]);
+			delValues2(rows["Cid"], rows["Pid"],rows["Start_date"]);
 		} else if (dependents) {
 			delValues(rows["Cid"], rows["Dname"]);
 		} else if (eworksIn) {
@@ -161,7 +175,8 @@ export default function DenseTable(props) {
 						>
 							{props.keys.map((key) => (
 								<TableCell component="th" scope="row">
-									{row[key]}
+                  {key.includes("Date")||key.includes("date")?row[key].split("T")[0] :row[key]}
+									
 								</TableCell>
 							))}
 							<TableCell align="right">

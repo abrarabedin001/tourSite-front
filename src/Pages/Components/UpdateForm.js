@@ -71,7 +71,7 @@ export default function UpdateForm(props) {
 						className="p-2 m-2 w-sm rounded"
 						onChange={(e) => handleChange(e, key)}
 						placeholder="test"
-						value={Value[key]}
+						value={Value[key].split("T")[0]}
 					/>
 				</div>
 			);
