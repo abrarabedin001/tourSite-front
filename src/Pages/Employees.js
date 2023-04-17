@@ -2,10 +2,12 @@ import { useEffect, useState, useRef } from "react";
 import * as React from "react";
 import Table from "./Components/Table";
 import Form from "./Components/Form";
+import UpdateDependent from "./Components/UpdateDependents";
 
 import axios from "axios";
 
 let api = "http://localhost:3001/employees";
+let api2 = "http://localhost:3001/employeesAll";
 const toapi = "http://localhost:3001/employees";
 
 export function Employees() {
@@ -13,16 +15,18 @@ export function Employees() {
 	const [Data, setData] = useState([]);
 	const [Keys, setKeys] = useState([]);
 	const [State, setState] = useState(false);
+	const [apiClean, setApi] = useState(api2);
+
+	const signIn = JSON.parse(localStorage.getItem("signIn"));
+
 	useEffect(() => {
 		async function getData() {
-			const signIn = JSON.parse(localStorage.getItem("signIn"));
 			if (signIn.mode === "Employee") {
 				// console.log("ki hoise");
 				console.log(signIn.id);
 				api = api + "/" + signIn.id;
 				console.log(api);
 			}
-
 			const res = await axios.get(api);
 			// console.log(res.data.data)
 			setKeys(Object.keys(res.data.data[0]));
@@ -31,7 +35,7 @@ export function Employees() {
 			setData(res.data.data);
 		}
 		getData();
-	}, [State]);
+	}, []);
 	return (
 		<div>
 			<Table
@@ -41,14 +45,24 @@ export function Employees() {
 				state={State}
 				setState={setState}
 				className=""
+				setApi={setApi}
 			/>
-			<Form
-				api={api}
-				toapi={toapi}
-				data={Data}
-				state={State}
-				setState={setState}
-			/>
+			<div className="flex">
+				<Form
+					api={api}
+					toapi={toapi}
+					data={Data}
+					state={State}
+					setState={setState}
+				/>
+				<UpdateDependent
+					api={apiClean}
+					toapi={toapi}
+					data={Data}
+					state={State}
+					setState={setState}
+				/>
+			</div>
 		</div>
 	);
 }

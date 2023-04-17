@@ -6,7 +6,7 @@ import axios from "axios";
 
 // const api = "http://localhost:3001/employees"
 
-export default function UpdateDependent(props) {
+export default function UpdateEmployees(props) {
 	const signIn = JSON.parse(localStorage.getItem("signIn"));
 
 	let component = " ";
@@ -38,13 +38,10 @@ export default function UpdateDependent(props) {
 			setKeys(Object.keys(res.data.data[0]));
 			setData(Object.values(res.data.data[0]));
 			setValue(res.data.data[0]);
-      console.log(Keys)
-      console.log(Data)
-      console.log(Value)
 			console.log("kaj korse");
 			console.log(api);
 			console.log("printing key and data:");
-			console.log(Keys, Data,Value);
+			console.log(Keys, Data);
 		}
 		getData();
 	}, [props.api]);
@@ -137,7 +134,6 @@ export default function UpdateDependent(props) {
 		setValue({ ...Value, ...obj });
 		setData(Object.values(Value));
 		console.log(Value);
-    console.log(Keys,Data)
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();

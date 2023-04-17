@@ -36,7 +36,9 @@ export default function DenseTable(props) {
 		(signIn?.mode === "Admin" && location === "/EWorksIn") ||
 		(signIn?.mode === "Admin" && location === "/customers") ||
 		(signIn?.mode === "Admin" && location === "/dependents") ||
-		(signIn?.mode === "Customer" && location === "/dependents")
+		(signIn?.mode === "Customer" && location === "/dependents")||
+		(signIn?.mode === "Admin" && location === "/Employees")
+
 	) {
 		showUpdate = true;
 	} else {
@@ -78,6 +80,8 @@ export default function DenseTable(props) {
 			link = props.toapi + "All/" + rows["Id"];
 		} else if (location === "/dependents") {
 			link = props.toapi + "All/" + rows["Cid"] + "/" + rows["Dname"];
+		} else if(location === "/Employees"){
+			link = props.toapi + "All/" + rows["Id"];
 		}
 		props.setApi(link);
 		console.log("Aikhane");
