@@ -6,7 +6,7 @@ import axios from "axios";
 
 // const api = "http://localhost:3001/employees"
 
-export default function UpdateDependent(props) {
+export default function UpdateForm(props) {
 	const signIn = JSON.parse(localStorage.getItem("signIn"));
 
 	let component = " ";
@@ -43,7 +43,7 @@ export default function UpdateDependent(props) {
       console.log(Value)
 			console.log("kaj korse");
 			console.log(api);
-			console.log("printing key and data:");
+			console.log("printing key and data and value:");
 			console.log(Keys, Data,Value);
 		}
 		getData();
@@ -58,7 +58,10 @@ export default function UpdateDependent(props) {
 		// const
 		if (date_input || date_input2) {
 			return (
-				<div key={key} className="flex flex-col rounded mt-2 text-black">
+				<div
+					key={key}
+					className="flex flex-col rounded mt-2 font-bold text-black"
+				>
 					<label htmlFor={key} className="w-full text-left pl-2">
 						{key}
 					</label>
@@ -68,12 +71,14 @@ export default function UpdateDependent(props) {
 						className="p-2 m-2 w-sm rounded"
 						onChange={(e) => handleChange(e, key)}
 						placeholder="test"
-						defaultValue={Data[index]}
+						value={Value[key]}
 					/>
 				</div>
 			);
-		} else if (phone || hour || sHour) {
+		} 
+    else if (phone || hour || sHour) {
 			return (
+      
 				<div
 					key={key}
 					className="flex flex-col rounded mt-2 font-bold text-black"
@@ -87,11 +92,12 @@ export default function UpdateDependent(props) {
 						className="p-2 m-2 w-sm rounded"
 						onChange={(e) => handleChange(e, key)}
 						placeholder="test"
-						defaultValue={Data[index]}
+						value={Value[key]}
 					/>
 				</div>
 			);
-		} else {
+		} 
+    else {
 			return (
 				<div
 					key={key}
@@ -106,11 +112,17 @@ export default function UpdateDependent(props) {
 						className="p-2 m-2 w-sm rounded"
 						onChange={(e) => handleChange(e, key)}
 						placeholder="test"
-						value={Data[index]}
+						value={Value[key]}
 					/>
 				</div>
 			);
 		}
+    // return(
+    //   <div>
+    //     {key}
+    //     {Data[index]}
+    //   </div>
+    // )
 	};
 
 	const sendValue = async (data) => {
@@ -131,8 +143,8 @@ export default function UpdateDependent(props) {
 
 	let handleChange = (e, key) => {
 		console.log("handleChange");
-		console.log(e.target.value);
-		console.log(key);
+		// console.log(e.target.value);
+		// console.log(key);
 		obj[key] = e.target.value;
 		setValue({ ...Value, ...obj });
 		setData(Object.values(Value));

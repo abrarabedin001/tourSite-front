@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import * as React from "react";
 import Table from "./Components/Table";
 import Form from "./Components/Form";
-import UpdateDependent from "./Components/UpdateDependents";
+import UpdateForm from "./Components/UpdateForm";
 
 import axios from "axios";
 
@@ -55,7 +55,7 @@ export function Employees() {
 					state={State}
 					setState={setState}
 				/>
-				<UpdateDependent
+				<UpdateForm
 					api={apiClean}
 					toapi={toapi}
 					data={Data}
