@@ -34,8 +34,8 @@ export default function DenseTable(props) {
 	}
 	if (
 		(signIn?.mode === "Admin" && location === "/EWorksIn") ||
-		(signIn?.mode === "Admin" && location === "/customers")||
-		(signIn?.mode === "Admin" && location === "/dependents")||
+		(signIn?.mode === "Admin" && location === "/customers") ||
+		(signIn?.mode === "Admin" && location === "/dependents") ||
 		(signIn?.mode === "Customer" && location === "/dependents")
 	) {
 		showUpdate = true;
@@ -76,6 +76,8 @@ export default function DenseTable(props) {
 			link = props.toapi + "All/" + rows["Lid"] + "/" + rows["Emp_id"];
 		} else if (location === "/customers") {
 			link = props.toapi + "All/" + rows["Id"];
+		} else if (location === "/dependents") {
+			link = props.toapi + "All/" + rows["Cid"] + "/" + rows["Dname"];
 		}
 
 		props.setApi(link);
