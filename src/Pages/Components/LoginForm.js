@@ -41,7 +41,7 @@ export default function LoginForm(props) {
 			if (employee) {
 				console.log(employee);
 				console.log(ctx);
-				if (employee.Id == "01") {
+				if (employee.Id === "01") {
 					console.log("1");
 					ctx.changeMode("Admin", employee.Id);
 				} else {

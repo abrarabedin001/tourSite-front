@@ -16,7 +16,7 @@ export function Employees() {
 	useEffect(() => {
 		async function getData() {
 			const signIn = JSON.parse(localStorage.getItem("signIn"));
-			if (signIn.mode == "Employee") {
+			if (signIn.mode === "Employee") {
 				// console.log("ki hoise");
 				console.log(signIn.id);
 				api = api + "/" + signIn.id;

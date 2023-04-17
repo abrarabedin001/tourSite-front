@@ -5,10 +5,10 @@ import Form from "./Components/Form";
 
 import axios from "axios";
 
-let api = "http://localhost:3001/custbuys";
-const toapi = "http://localhost:3001/custbuys";
+let api = "http://localhost:3001/CusHire";
+const toapi = "http://localhost:3001/CusHire";
 
-export function CustBuys() {
+export function CusHire() {
 	const dataRef = useRef([]);
 	const [Data, setData] = useState([]);
 	const [Keys, setKeys] = useState([]);
@@ -24,7 +24,6 @@ export function CustBuys() {
 			}
 
 			const res = await axios.get(api);
-			// console.log(res.data.data)
 			setKeys(Object.keys(res.data.data[0]));
 			dataRef.current = res.data.data;
 
@@ -43,8 +42,8 @@ export function CustBuys() {
 				className=""
 			/>
 			<Form
-				api={api}
-				toapi={toapi}
+				api="http://localhost:3001/CusHire"
+				toapi="http://localhost:3001/CusHire"
 				data={Data}
 				state={State}
 				setState={setState}

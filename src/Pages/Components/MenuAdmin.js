@@ -19,13 +19,17 @@ const pages = [
 	<Link className="no-underline" to="/customers">
 		Customers
 	</Link>,
-	<Link className="no-underline" to="/receipts">
-		Receipts
-	</Link>,
 
 	<Link className="no-underline" to="/dependents">
 		Dependents
 	</Link>,
+	<Link to="/CusBook" className="no-underline">
+		CusBook
+	</Link>,
+	<Link to="/CusHire" className="no-underline">
+		CusHire
+	</Link>,
+
 	<Link to="/Employees" className="no-underline">
 		Employees
 	</Link>,

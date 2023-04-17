@@ -1,32 +1,28 @@
-import { useEffect, useState, useRef, useContext } from "react";
+import { useEffect, useState, useRef } from "react";
 import * as React from "react";
 import Table from "./Components/Table";
 import Form from "./Components/Form";
-import UpdateCustomerForm from "./Components/UpdateCustomerForm";
 
 import axios from "axios";
 
-let api = "http://localhost:3001/customers";
-let api2 = "http://localhost:3001/customersAll";
-const toapi = "http://localhost:3001/customers";
+let api = "http://localhost:3001/cusbook";
+const toapi = "http://localhost:3001/cusbook";
 
-export function Customers() {
+export function CusBook() {
 	const dataRef = useRef([]);
 	const [Data, setData] = useState([]);
 	const [Keys, setKeys] = useState([]);
 	const [State, setState] = useState(false);
-	const [apiClean, setApi] = useState(api2);
-
-	const signIn = JSON.parse(localStorage.getItem("signIn"));
-
 	useEffect(() => {
 		async function getData() {
-			if (signIn.mode === "Employee") {
+			const signIn = JSON.parse(localStorage.getItem("signIn"));
+			if (signIn.mode === "Customer") {
 				// console.log("ki hoise");
 				console.log(signIn.id);
 				api = api + "/" + signIn.id;
 				console.log(api);
 			}
+
 			const res = await axios.get(api);
 			// console.log(res.data.data)
 			setKeys(Object.keys(res.data.data[0]));
@@ -35,7 +31,7 @@ export function Customers() {
 			setData(res.data.data);
 		}
 		getData();
-	}, []);
+	}, [State]);
 	return (
 		<div>
 			<Table
@@ -45,24 +41,14 @@ export function Customers() {
 				state={State}
 				setState={setState}
 				className=""
-				setApi={setApi}
 			/>
-			<div className="flex">
-				<Form
-					api={api}
-					toapi={toapi}
-					data={Data}
-					state={State}
-					setState={setState}
-				/>
-				<UpdateCustomerForm
-					api={apiClean}
-					toapi={toapi}
-					data={Data}
-					state={State}
-					setState={setState}
-				/>
-			</div>
+			<Form
+				api={api}
+				toapi={toapi}
+				data={Data}
+				state={State}
+				setState={setState}
+			/>
 		</div>
 	);
 }

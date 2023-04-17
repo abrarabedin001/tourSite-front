@@ -6,9 +6,8 @@ import axios from "axios";
 
 // const api = "http://localhost:3001/employees"
 
-export default function Form(props) {
-	const signIn = JSON.parse(localStorage.getItem("signIn"));
-	const api = props.api + "All";
+export default function CustomerSignUpForm(props) {
+	const api = props.api;
 	let component = " ";
 	let location = useLocation().pathname;
 
@@ -35,12 +34,11 @@ export default function Form(props) {
 
 	const fieldChecker = (key) => {
 		const date_input = key.includes("date");
-		const date_input2 = key.includes("Date");
 		const phone = key.includes("Phone");
 		const hour = key.includes("Hour");
 		const sHour = key.includes("hour");
 		// const
-		if (date_input || date_input2) {
+		if (date_input) {
 			return (
 				<div key={key} className="flex flex-col rounded mt-2 text-black">
 					<label htmlFor={key} className="w-full text-left pl-2">
@@ -97,7 +95,6 @@ export default function Form(props) {
 
 	const sendValue = async (data) => {
 		try {
-			console.log(data);
 			const resp = await axios.post(toapi, data);
 			console.log(resp.data);
 		} catch (err) {
@@ -124,33 +121,21 @@ export default function Form(props) {
 		}, 1000);
 	};
 
-	if (signIn) {
-		console.log(location);
-		console.log(location === "/dependents");
-		if (
-			signIn.mode === "Admin" ||
-			location === "/dependents" ||
-			location === "/CustBuys"
-		) {
-			component = (
-				<div>
-					<h1 className="bold font-bold text-2xl mb-3 text-white">
-						Form input
-					</h1>
-					<form className="max-w-[500px] bg-blue-500 flex flex-wrap space-between flex-col rounded font-bold text-md text-white">
-						{Keys.map((key) => fieldChecker(key))}
-						<button
-							onClick={handleSubmit}
-							type="submit"
-							className="bg-blue-200 rounded p-3 m-3 max-w-[200px] font-bold text-lg text-black"
-						>
-							Submit
-						</button>
-					</form>
-				</div>
-			);
-		}
-	}
-
-	return <div className="m-5">{component}</div>;
+	return (
+		<div className="m-5">
+			<div>
+				<h1 className="bold font-bold text-2xl mb-3 text-white">Form input</h1>
+				<form className="max-w-[500px] bg-blue-500 flex flex-wrap space-between flex-col rounded font-bold text-md text-white">
+					{Keys.map((key) => fieldChecker(key))}
+					<button
+						onClick={handleSubmit}
+						type="submit"
+						className="bg-blue-200 rounded p-3 m-3 max-w-[200px] font-bold text-lg text-black"
+					>
+						Submit
+					</button>
+				</form>
+			</div>
+		</div>
+	);
 }
