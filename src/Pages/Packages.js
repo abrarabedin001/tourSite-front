@@ -8,7 +8,7 @@ import UpdateForm from "./Components/UpdateForm";
 import axios from 'axios';
 
 const api = "http://localhost:3001/packages"
-let api2 = "http://localhost:3001/employeesAll";
+let api2 = "http://localhost:3001/packagesAll";
 const toapi = "http://localhost:3001/packages"
 
 
