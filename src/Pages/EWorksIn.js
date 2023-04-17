@@ -2,10 +2,12 @@ import { useEffect, useState, useRef } from "react";
 import * as React from "react";
 import Table from "./Components/Table";
 import Form from "./Components/Form";
+import UpdateEworksIn from "./Components/UpdateEworksIn";
 
 import axios from "axios";
 
 let api = "http://localhost:3001/eworksin";
+let api2 = "http://localhost:3001/eworksinAll";
 const toapi = "http://localhost:3001/eworksin";
 
 export function EWorksIn() {
@@ -13,12 +15,13 @@ export function EWorksIn() {
 	const [Data, setData] = useState([]);
 	const [Keys, setKeys] = useState([]);
 	const [State, setState] = useState(false);
+	const [apiClean, setApi] = useState(api2);
 
 	const signIn = JSON.parse(localStorage.getItem("signIn"));
 
 	useEffect(() => {
 		async function getData() {
-			if (signIn.mode == "Employee") {
+			if (signIn.mode === "Employee") {
 				// console.log("ki hoise");
 				console.log(signIn.id);
 				api = api + "/" + signIn.id;
@@ -42,14 +45,24 @@ export function EWorksIn() {
 				state={State}
 				setState={setState}
 				className=""
+				setApi={setApi}
 			/>
-			<Form
-				api={api}
-				toapi={toapi}
-				data={Data}
-				state={State}
-				setState={setState}
-			/>
+			<div className="flex">
+				<Form
+					api={api}
+					toapi={toapi}
+					data={Data}
+					state={State}
+					setState={setState}
+				/>
+				<UpdateEworksIn
+					api={apiClean}
+					toapi={toapi}
+					data={Data}
+					state={State}
+					setState={setState}
+				/>
+			</div>
 		</div>
 	);
 }

@@ -26,6 +26,12 @@ const pages = [
 	<Link to="/CustBuys" className="no-underline">
 		CustBuys
 	</Link>,
+	<Link to="/CusBook" className="no-underline">
+		CusBook
+	</Link>,
+	<Link to="/CusHire" className="no-underline">
+		CusHire
+	</Link>,
 
 	<Link to="/Packages" className="no-underline">
 		Packages

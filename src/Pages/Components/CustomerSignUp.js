@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import * as React from "react";
 // import Table from './Components/Table';
-import Form from "./Form";
+import CustomerSignUpForm from "./CustomerSignUpForm";
 
 import axios from "axios";
 
@@ -29,7 +29,7 @@ export function CustomerSignUp() {
 	}, [State]);
 	return (
 		<div>
-			<Form
+			<CustomerSignUpForm
 				api={api}
 				toapi={toapi}
 				data={Data}

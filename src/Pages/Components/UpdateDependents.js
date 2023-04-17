@@ -6,11 +6,12 @@ import axios from "axios";
 
 // const api = "http://localhost:3001/employees"
 
-export default function Form(props) {
+export default function UpdateDependent(props) {
 	const signIn = JSON.parse(localStorage.getItem("signIn"));
-	const api = props.api + "All";
+
 	let component = " ";
 	let location = useLocation().pathname;
+	let dataRef = useRef([""]);
 
 	//props.toapi
 	// props.data
@@ -18,7 +19,7 @@ export default function Form(props) {
 	// props.state
 	// props.setState
 
-	const toapi = props.toapi;
+	let toapi = props.toapi;
 
 	const [Value, setValue] = useState({});
 	const [Data, setData] = useState([]);
@@ -26,14 +27,26 @@ export default function Form(props) {
 
 	let obj = {};
 	useEffect(() => {
+		let api = props.api;
+
+		console.log(props.data);
 		async function getData() {
+			console.log("running customer update form");
 			const res = await axios.get(api);
+			console.log(res.data.data);
+			// console.log(Object.keys(res.data.data[0]));
 			setKeys(Object.keys(res.data.data[0]));
+			setData(Object.values(res.data.data[0]));
+			setValue(res.data.data[0]);
+			console.log("kaj korse");
+			console.log(api);
+			console.log("printing key and data:");
+			console.log(Keys, Data);
 		}
 		getData();
-	}, []);
+	}, [props.api]);
 
-	const fieldChecker = (key) => {
+	const fieldChecker = (key, index) => {
 		const date_input = key.includes("date");
 		const date_input2 = key.includes("Date");
 		const phone = key.includes("Phone");
@@ -52,6 +65,7 @@ export default function Form(props) {
 						className="p-2 m-2 w-sm rounded"
 						onChange={(e) => handleChange(e, key)}
 						placeholder="test"
+						defaultValue={Data[index]}
 					/>
 				</div>
 			);
@@ -67,10 +81,10 @@ export default function Form(props) {
 					<input
 						type="number"
 						id={key}
-						defaultValue=""
 						className="p-2 m-2 w-sm rounded"
 						onChange={(e) => handleChange(e, key)}
 						placeholder="test"
+						defaultValue={Data[index]}
 					/>
 				</div>
 			);
@@ -89,6 +103,7 @@ export default function Form(props) {
 						className="p-2 m-2 w-sm rounded"
 						onChange={(e) => handleChange(e, key)}
 						placeholder="test"
+						value={Data[index]}
 					/>
 				</div>
 			);
@@ -98,7 +113,12 @@ export default function Form(props) {
 	const sendValue = async (data) => {
 		try {
 			console.log(data);
-			const resp = await axios.post(toapi, data);
+			let api = props.api;
+			api = api.replace("All", "");
+			console.log(api);
+			let sendData = data;
+			console.log("data123: ", sendData);
+			const resp = await axios.patch(api, sendData);
 			console.log(resp.data);
 		} catch (err) {
 			// Handle Error Here
@@ -107,24 +127,28 @@ export default function Form(props) {
 	};
 
 	let handleChange = (e, key) => {
+		console.log("handleChange");
 		console.log(e.target.value);
 		console.log(key);
 		obj[key] = e.target.value;
 		setValue({ ...Value, ...obj });
+		setData(Object.values(Value));
 		console.log(Value);
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log("hurrah!!!");
+		console.log(Value);
 		sendValue(Value);
+		// setTimeout(() => {
+		// 	window.location.reload(true);
+		// }, 1000);
 
-		props.setState(!props.State);
-		setTimeout(() => {
-			window.location.reload(true);
-		}, 1000);
+		//props.setState(!props.State);
 	};
 
 	if (signIn) {
+		console.log("check Sign in ");
 		console.log(location);
 		console.log(location === "/dependents");
 		if (
@@ -135,13 +159,12 @@ export default function Form(props) {
 			component = (
 				<div>
 					<h1 className="bold font-bold text-2xl mb-3 text-white">
-						Form input
+						Update Form
 					</h1>
 					<form className="max-w-[500px] bg-blue-500 flex flex-wrap space-between flex-col rounded font-bold text-md text-white">
-						{Keys.map((key) => fieldChecker(key))}
+						{Keys.map((key, index) => fieldChecker(key, index))}
 						<button
 							onClick={handleSubmit}
-							type="submit"
 							className="bg-blue-200 rounded p-3 m-3 max-w-[200px] font-bold text-lg text-black"
 						>
 							Submit

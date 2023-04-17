@@ -12,6 +12,8 @@ import { EWorksIn } from "../EWorksIn";
 import { CustBuys } from "../CustBuys";
 import { PackageHas } from "../PackageHas";
 import { Dependents } from "../Dependents";
+import { CusBook } from "../CusBook";
+import { CusHire } from "../CusHire";
 
 import { UserContext } from "../../Store/AppStore";
 // import Table from './Table';
@@ -49,9 +51,9 @@ function Header() {
 		<div className="App ">
 			{signIn ? (
 				<div>
-					{signIn.mode == "Admin" ? <MenuAdmin /> : ""}
-					{signIn.mode == "Customer" ? <MenuCustomer /> : ""}
-					{signIn.mode == "Employee" ? <MenuEmployee /> : ""}
+					{signIn.mode === "Admin" ? <MenuAdmin /> : ""}
+					{signIn.mode === "Customer" ? <MenuCustomer /> : ""}
+					{signIn.mode === "Employee" ? <MenuEmployee /> : ""}
 				</div>
 			) : (
 				" "
@@ -64,6 +66,8 @@ function Header() {
 
 							<Route path="/Dependents" element={<Dependents />} />
 							<Route path="/Employees" element={<Employees />} />
+							<Route path="/CusBook" element={<CusBook />} />
+							<Route path="/CusHire" element={<CusHire />} />
 							<Route path="/Packages" element={<Packages />} />
 							<Route path="/Locations" element={<Locations />} />
 							<Route path="/Drives" element={<Drives />} />

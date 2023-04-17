@@ -7,6 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { UserContext } from "../../Store/AppStore";
+import { useLocation } from "react-router-dom";
 import { useEffect, useState, useRef, useContext } from "react";
 
 import axios from "axios";
@@ -15,16 +16,37 @@ export default function DenseTable(props) {
 	//props.keys
 	// props.State
 	// props.setState
+	//props.setApi
 	let rows = props.Data;
 	let toapi = props.toapi;
+	let delapi = props.toapi;
 	const signIn = JSON.parse(localStorage.getItem("signIn"));
-
+	let location = useLocation().pathname;
 	let ctx = useContext(UserContext);
+	let show = false;
+	let showUpdate = false;
+	if (
+		signIn?.mode === "Admin" ||
+		(location === "/dependents" && signIn?.mode === "Customer") ||
+		(location === "/CustBuys" && signIn?.mode === "Customer")
+	) {
+		show = true;
+	}
+	if (
+		(signIn?.mode === "Admin" && location === "/EWorksIn") ||
+		(signIn?.mode === "Admin" && location === "/customers")||
+		(signIn?.mode === "Admin" && location === "/dependents")||
+		(signIn?.mode === "Customer" && location === "/dependents")
+	) {
+		showUpdate = true;
+	} else {
+		showUpdate = false;
+	}
 
 	// console.log(rows)
 	const delValue = async (Id) => {
 		try {
-			let link = toapi + "/" + Id;
+			let link = delapi + "/" + Id;
 			console.log(link);
 			const resp = await axios.delete(link);
 		} catch (err) {
@@ -34,8 +56,11 @@ export default function DenseTable(props) {
 	};
 	const delValues = async (Id1, Id2) => {
 		try {
-			let link = toapi + "/" + Id1 + "/" + Id2;
+			console.log(Id1);
+			let link = delapi + "/" + Id1 + "/" + Id2;
+
 			console.log(link);
+			console.log("delapi");
 			const resp = await axios.delete(link);
 		} catch (err) {
 			// Handle Error Here
@@ -43,6 +68,20 @@ export default function DenseTable(props) {
 		}
 	};
 
+	const updateHandler = (e, rows) => {
+		console.log(rows);
+		console.log("running update handler");
+		let link = " ";
+		if (location === "/EWorksIn") {
+			link = props.toapi + "All/" + rows["Lid"] + "/" + rows["Emp_id"];
+		} else if (location === "/customers") {
+			link = props.toapi + "All/" + rows["Id"];
+		}
+
+		props.setApi(link);
+		console.log("Aikhane");
+		console.log(link);
+	};
 	const deleteHandler = (e, rows) => {
 		props.setState(!props.State);
 		// let col_name = rows.object.key()
@@ -55,6 +94,8 @@ export default function DenseTable(props) {
 		let dependents = props.toapi.includes("/dependents");
 		let eworksIn = props.toapi.includes("/eworksin");
 		let receipts = props.toapi.includes("/receipts");
+		let cushire = props.toapi.includes("/CusHire");
+		let cusbook = props.toapi.includes("/cusbook");
 
 		if (acc_belongsTo) {
 			console.log(rows);
@@ -73,6 +114,10 @@ export default function DenseTable(props) {
 			delValues(rows["Cid"], rows["Dname"]);
 		} else if (eworksIn) {
 			delValues(rows["Lid"], rows["Emp_id"]);
+		} else if (cushire) {
+			delValues(rows["Cid"], rows["Vlicense"]);
+		} else if (cusbook) {
+			delValues(rows["Cid"], rows["Aid"]);
 		} else {
 			delValue(rows["Id"]);
 		}
@@ -105,15 +150,24 @@ export default function DenseTable(props) {
 								</TableCell>
 							))}
 							<TableCell align="right">
-								{signIn?.mode == "Admin" ? (
+								{showUpdate && (
+									<button
+										className="p-2 m-2 bg-green-700 rounded-lg text-white font-bold"
+										onClick={(e, rows) => updateHandler(e, row)}
+									>
+										Update
+									</button>
+								)}
+							</TableCell>
+
+							<TableCell align="right">
+								{show && (
 									<button
 										className="p-2 m-2 bg-red-700 rounded-lg text-white font-bold"
 										onClick={(e, rows) => deleteHandler(e, row)}
 									>
 										Delete
 									</button>
-								) : (
-									""
 								)}
 							</TableCell>
 						</TableRow>
