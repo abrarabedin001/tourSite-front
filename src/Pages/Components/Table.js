@@ -76,8 +76,9 @@ export default function DenseTable(props) {
 			link = props.toapi + "All/" + rows["Lid"] + "/" + rows["Emp_id"];
 		} else if (location === "/customers") {
 			link = props.toapi + "All/" + rows["Id"];
+		}else if (location === "/dependents") {
+			link = props.toapi + "All/" + rows["Cid"]+"/"+rows["Dname"];
 		}
-
 		props.setApi(link);
 		console.log("Aikhane");
 		console.log(link);
