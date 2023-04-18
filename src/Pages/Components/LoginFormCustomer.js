@@ -85,8 +85,8 @@ export default function LoginForm(props) {
 					</label>
 					<input
 						ref={PasswordRef}
-						type="text"
-						id="Id"
+						type="password"
+						id="password"
 						className="p-2 m-2 w-sm rounded"
 						placeholder="test"
 					/>

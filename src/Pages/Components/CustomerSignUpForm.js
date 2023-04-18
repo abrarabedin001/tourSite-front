@@ -37,6 +37,7 @@ export default function CustomerSignUpForm(props) {
 		const phone = key.includes("Phone");
 		const hour = key.includes("Hour");
 		const sHour = key.includes("hour");
+		const password = key.includes("Password");
 		// const
 		if (date_input) {
 			return (
@@ -72,7 +73,26 @@ export default function CustomerSignUpForm(props) {
 					/>
 				</div>
 			);
-		} else {
+		} else if (password){
+      return (
+				<div
+					key={key}
+					className="flex flex-col rounded mt-2 font-bold text-black"
+				>
+					<label htmlFor={key} className="w-full text-left pl-2">
+						{key}
+					</label>
+					<input
+						type="password"
+						id={key}
+						className="p-2 m-2 w-sm rounded"
+						onChange={(e) => handleChange(e, key)}
+						placeholder="test"
+						value={Value[key]?Value[key].split("T")[0]:""}
+					/>
+				</div>
+			);
+    }else {
 			return (
 				<div
 					key={key}

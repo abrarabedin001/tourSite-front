@@ -77,10 +77,15 @@ export default function DenseTable(props) {
 			console.error(err);
 		}
 	};
+
+  // DEALS WITH DATES
   const delValues2 = async (Id1, Id2,Id3) => {
 		try {
-			const myArray = Id3.split("T");
-      Id3 = myArray[0]
+
+        const myArray = Id3.split("T");
+        Id3 = myArray[0]
+   
+			
 			let link = delapi + "/" + Id1 + "/" + Id2+"/"+Id3;
 
 			console.log(link);
@@ -91,6 +96,8 @@ export default function DenseTable(props) {
 			console.error(err);
 		}
 	};
+  //DEALS WITH IDS AS THIRD PARAM
+
 
 	const updateHandler = (e, rows) => {
 		console.log(rows);
@@ -152,7 +159,7 @@ export default function DenseTable(props) {
 		} else if (cushire) {
 			delValues(rows["Cid"], rows["Vlicense"]);
 		} else if (cusbook) {
-			delValues(rows["Cid"], rows["Aid"]);
+			delValues2(rows["Cid"], rows["Aid"],rows["Date"]);
 		} else {
 			delValue(rows["Id"]);
 		}
