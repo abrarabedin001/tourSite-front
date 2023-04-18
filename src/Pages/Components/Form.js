@@ -33,7 +33,7 @@ export default function Form(props) {
 		getData();
 	}, []);
 
-	const fieldChecker = (key) => {
+	const fieldChecker = (key,index) => {
 		const date_input = key.includes("date");
 		const date_input2 = key.includes("Date");
 		const phone = key.includes("Phone");
@@ -42,7 +42,7 @@ export default function Form(props) {
 		// const
 		if (date_input || date_input2) {
 			return (
-				<div key={key} className="flex flex-col rounded mt-2 text-black">
+				<div key={index} className="flex flex-col rounded mt-2 text-black">
 					<label htmlFor={key} className="w-full text-left pl-2">
 						{key}
 					</label>
@@ -58,7 +58,7 @@ export default function Form(props) {
 		} else if (phone || hour || sHour) {
 			return (
 				<div
-					key={key}
+					key={index}
 					className="flex flex-col rounded mt-2 font-bold text-black"
 				>
 					<label htmlFor={key} className="w-full text-left pl-2">
@@ -77,7 +77,7 @@ export default function Form(props) {
 		} else {
 			return (
 				<div
-					key={key}
+					key={index}
 					className="flex flex-col rounded mt-2 font-bold text-black"
 				>
 					<label htmlFor={key} className="w-full text-left pl-2">
@@ -128,9 +128,9 @@ export default function Form(props) {
 		console.log(location);
 		console.log(location === "/dependents");
 		if (
-			signIn.mode === "Admin" ||
-			location === "/dependents" ||
-			location === "/CustBuys"
+      signIn.mode === "Admin" ||
+      (signIn.mode === "Customer" && location === "/dependents")||
+      (signIn.mode === "Customer" && location === "/CustBuys")
 		) {
 			component = (
 				<div>
@@ -138,7 +138,7 @@ export default function Form(props) {
 						Form input
 					</h1>
 					<form className="max-w-[500px] bg-blue-500 flex flex-wrap space-between flex-col rounded font-bold text-md text-white">
-						{Keys.map((key) => fieldChecker(key))}
+						{Keys.map((key,index) => fieldChecker(key,index))}
 						<button
 							onClick={handleSubmit}
 							type="submit"

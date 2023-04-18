@@ -71,7 +71,7 @@ export default function UpdateForm(props) {
 						className="p-2 m-2 w-sm rounded"
 						onChange={(e) => handleChange(e, key)}
 						placeholder="test"
-						value={Value[key].split("T")[0]}
+						value={Value[key]?Value[key].split("T")[0]:""}
 					/>
 				</div>
 			);
@@ -92,7 +92,7 @@ export default function UpdateForm(props) {
 						className="p-2 m-2 w-sm rounded"
 						onChange={(e) => handleChange(e, key)}
 						placeholder="test"
-						value={Value[key]}
+						value={Value[key]?Value[key]:""}
 					/>
 				</div>
 			);
@@ -112,7 +112,7 @@ export default function UpdateForm(props) {
 						className="p-2 m-2 w-sm rounded"
 						onChange={(e) => handleChange(e, key)}
 						placeholder="test"
-						value={Value[key]}
+						value={Value[key]?Value[key]:""}
 					/>
 				</div>
 			);
@@ -160,7 +160,7 @@ export default function UpdateForm(props) {
 		// 	window.location.reload(true);
 		// }, 1000);
 
-		//props.setState(!props.State);
+		props.setState(!props.State);
 	};
 
 	if (signIn) {
@@ -169,8 +169,9 @@ export default function UpdateForm(props) {
 		console.log(location === "/dependents");
 		if (
 			signIn.mode === "Admin" ||
-			location === "/dependents" ||
-			location === "/CustBuys"
+      (signIn.mode === "Customer" && location === "/dependents")||
+      (signIn.mode === "Customer" && location === "/CustBuys")
+			
 		) {
 			component = (
 				<div>

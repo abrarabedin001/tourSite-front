@@ -21,16 +21,16 @@ export function Drives() {
 	const [State, setState] = useState(false);
 	const [apiClean, setApi] = useState(api2);
 
-	const signIn = JSON.parse(localStorage.getItem("signIn"));
+	// const signIn = JSON.parse(localStorage.getItem("signIn"));
 
 	useEffect(() => {
 		async function getData() {
-			if (signIn.mode === "Employee") {
-				// console.log("ki hoise");
-				console.log(signIn.id);
-				api = api + "/" + signIn.id;
-				console.log(api);
-			}
+			// if (signIn.mode === "Employee") {
+			// 	// console.log("ki hoise");
+			// 	console.log(signIn.id);
+			// 	api = api + "/" + signIn.id;
+			// 	console.log(api);
+			// }
 			const res = await axios.get(api);
 			// console.log(res.data.data)
 			setKeys(Object.keys(res.data.data[0]));
