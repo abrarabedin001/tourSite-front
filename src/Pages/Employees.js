@@ -23,9 +23,9 @@ export function Employees() {
 		async function getData() {
 			if (signIn.mode === "Employee") {
 				// console.log("ki hoise");
-				console.log(signIn.id);
+				// console.log(signIn.id);
 				api = api + "/" + signIn.id;
-				console.log(api);
+				// console.log(api);
 			}
 			const res = await axios.get(api);
 			// console.log(res.data.data)

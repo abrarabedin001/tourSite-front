@@ -49,10 +49,6 @@ const pages = [
 	<Link to="/AccBelongsTo" className="no-underline">
 		AccBelongsTo
 	</Link>,
-
-	<Link to="/CustBuys" className="no-underline">
-		CustBuys
-	</Link>,
 	<Link to="/PackageHas" className="no-underline">
 		PackageHas
 	</Link>,
@@ -67,6 +63,12 @@ const settings = [
 	</Link>,
 	<Link to="/CustBuys" className="no-underline">
 		CustBuys
+	</Link>,
+	<Link to="/CusBook" className="no-underline">
+		CusBook
+	</Link>,
+	<Link to="/CusHire" className="no-underline">
+		CusHire
 	</Link>,
 
 	<Link to="/Packages" className="no-underline">
@@ -85,7 +87,6 @@ const settings = [
 	<Link to="/AccBelongsTo" className="no-underline">
 		AccBelongsTo
 	</Link>,
-
 	<Link to="/PackageHas" className="no-underline">
 		PackageHas
 	</Link>,

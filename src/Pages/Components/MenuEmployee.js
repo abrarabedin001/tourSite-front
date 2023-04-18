@@ -93,7 +93,7 @@ function ResponsiveAppBar() {
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
 					{/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
-					<Typography
+					{/* <Typography
 						variant="h6"
 						noWrap
 						component="a"
@@ -109,7 +109,7 @@ function ResponsiveAppBar() {
 						}}
 					>
 						LOGO
-					</Typography>
+					</Typography> */}
 
 					<Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
 						<Menu

@@ -31,20 +31,20 @@ export default function UpdateForm(props) {
 
 		console.log(props.data);
 		async function getData() {
-			console.log("running Dependent update form");
+			// console.log("running Dependent update form");
 			const res = await axios.get(api);
-			console.log(res.data.data);
+			// console.log(res.data.data);
 			// console.log(Object.keys(res.data.data[0]));
 			setKeys(Object.keys(res.data.data[0]));
 			setData(Object.values(res.data.data[0]));
 			setValue(res.data.data[0]);
-      console.log(Keys)
-      console.log(Data)
-      console.log(Value)
-			console.log("kaj korse");
-			console.log(api);
-			console.log("printing key and data and value:");
-			console.log(Keys, Data,Value);
+      // console.log(Keys)
+      // console.log(Data)
+      // console.log(Value)
+			// console.log("kaj korse");
+			// console.log(api);
+			// console.log("printing key and data and value:");
+			// console.log(Keys, Data,Value);
 		}
 		getData();
 	}, [props.api]);
@@ -55,6 +55,7 @@ export default function UpdateForm(props) {
 		const phone = key.includes("Phone");
 		const hour = key.includes("Hour");
 		const sHour = key.includes("hour");
+    const password = key.includes("Password")
 		// const
 		if (date_input || date_input2) {
 			return (
@@ -71,11 +72,30 @@ export default function UpdateForm(props) {
 						className="p-2 m-2 w-sm rounded"
 						onChange={(e) => handleChange(e, key)}
 						placeholder="test"
-						value={Value[key].split("T")[0]}
+						value={Value[key]?Value[key].split("T")[0]:""}
 					/>
 				</div>
 			);
-		} 
+		} else if (password){
+      return (
+				<div
+					key={key}
+					className="flex flex-col rounded mt-2 font-bold text-black"
+				>
+					<label htmlFor={key} className="w-full text-left pl-2">
+						{key}
+					</label>
+					<input
+						type="password"
+						id={key}
+						className="p-2 m-2 w-sm rounded"
+						onChange={(e) => handleChange(e, key)}
+						placeholder="test"
+						value={Value[key]?Value[key].split("T")[0]:""}
+					/>
+				</div>
+			);
+    }
     else if (phone || hour || sHour) {
 			return (
       
@@ -92,7 +112,7 @@ export default function UpdateForm(props) {
 						className="p-2 m-2 w-sm rounded"
 						onChange={(e) => handleChange(e, key)}
 						placeholder="test"
-						value={Value[key]}
+						value={Value[key]?Value[key]:""}
 					/>
 				</div>
 			);
@@ -112,7 +132,7 @@ export default function UpdateForm(props) {
 						className="p-2 m-2 w-sm rounded"
 						onChange={(e) => handleChange(e, key)}
 						placeholder="test"
-						value={Value[key]}
+						value={Value[key]?Value[key]:""}
 					/>
 				</div>
 			);
@@ -148,29 +168,30 @@ export default function UpdateForm(props) {
 		obj[key] = e.target.value;
 		setValue({ ...Value, ...obj });
 		setData(Object.values(Value));
-		console.log(Value);
-    console.log(Keys,Data)
+		// console.log(Value);
+    // console.log(Keys,Data)
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log("hurrah!!!");
-		console.log(Value);
+		// console.log("hurrah!!!");
+		// console.log(Value);
 		sendValue(Value);
 		// setTimeout(() => {
 		// 	window.location.reload(true);
 		// }, 1000);
 
-		//props.setState(!props.State);
+		props.setState(!props.State);
 	};
 
 	if (signIn) {
-		console.log("check Sign in ");
-		console.log(location);
-		console.log(location === "/dependents");
+		// console.log("check Sign in ");
+		// console.log(location);
+		// console.log(location === "/dependents");
 		if (
 			signIn.mode === "Admin" ||
-			location === "/dependents" ||
-			location === "/CustBuys"
+      (signIn.mode === "Customer" && location === "/dependents")||
+      (signIn.mode === "Customer" && location === "/CustBuys")
+			
 		) {
 			component = (
 				<div>

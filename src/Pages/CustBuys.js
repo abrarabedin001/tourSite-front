@@ -23,7 +23,7 @@ export function CustBuys() {
 
 	useEffect(() => {
 		async function getData() {
-			if (signIn.mode === "Employee") {
+			if (signIn.mode === "Customer") {
 				// console.log("ki hoise");
 				console.log(signIn.id);
 				api = api + "/" + signIn.id;

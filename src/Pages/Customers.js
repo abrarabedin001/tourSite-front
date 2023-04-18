@@ -2,7 +2,7 @@ import { useEffect, useState, useRef, useContext } from "react";
 import * as React from "react";
 import Table from "./Components/Table";
 import Form from "./Components/Form";
-import UpdateCustomerForm from "./Components/UpdateCustomerForm";
+import UpdateForm from "./Components/UpdateForm";
 
 import axios from "axios";
 
@@ -55,7 +55,7 @@ export function Customers() {
 					state={State}
 					setState={setState}
 				/>
-				<UpdateCustomerForm
+				<UpdateForm
 					api={apiClean}
 					toapi={toapi}
 					data={Data}
