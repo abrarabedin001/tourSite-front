@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import * as React from "react";
 import Table from "./Components/Table";
 import Form from "./Components/Form";
-import UpdateEworksIn from "./Components/UpdateEworksIn";
+import UpdateForm from "./Components/UpdateForm";
 
 import axios from "axios";
 
@@ -16,6 +16,8 @@ export function EWorksIn() {
 	const [Keys, setKeys] = useState([]);
 	const [State, setState] = useState(false);
 	const [apiClean, setApi] = useState(api2);
+  const [showForm , setShowForm] = useState(false);
+
 
 	const signIn = JSON.parse(localStorage.getItem("signIn"));
 
@@ -46,6 +48,8 @@ export function EWorksIn() {
 				setState={setState}
 				className=""
 				setApi={setApi}
+        setShowForm ={setShowForm}
+
 			/>
 			<div className="flex">
 				<Form
@@ -55,13 +59,13 @@ export function EWorksIn() {
 					state={State}
 					setState={setState}
 				/>
-				<UpdateEworksIn
+				{showForm&&<UpdateForm
 					api={apiClean}
 					toapi={toapi}
 					data={Data}
 					state={State}
 					setState={setState}
-				/>
+				/>}
 			</div>
 		</div>
 	);

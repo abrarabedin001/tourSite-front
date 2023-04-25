@@ -17,6 +17,7 @@ export default function DenseTable(props) {
 	// props.State
 	// props.setState
 	//props.setApi
+  //props.setShowForm
 	let rows = props.Data;
 	let toapi = props.toapi;
 	let delapi = props.toapi;
@@ -113,7 +114,8 @@ export default function DenseTable(props) {
   const addHandler = (e, rows) => {
 		console.log(rows);
 		console.log("running update handler");
-		let addLink = "http://localhost:3001/custbuys" 
+		let addLink = "http://localhost:3001/custbuystest" 
+		let addLink2 = "http://localhost:3001/custbuys" 
     let Pid = rows["Id"]
     // Cid, Pid, Start_date, End_date,Paid_unpaid
 
@@ -132,12 +134,22 @@ export default function DenseTable(props) {
       "End_date":End_date,
       "Paid_unpaid":Paid_unpaid
     }
-    const sendValue = async (link1,data) => {
+    const sendValue = async (link1,link2,data) => {
       try {
-        let link = link1 
+        let link = link1 + "/" + data.Cid + "/" + data.Pid +"/"+data.Start_date;
         console.log(link);
         console.log("exp")
-        const resp = await axios.post(link,data);
+        const resp = await axios.get(link);
+        console.log(resp)
+        if (resp.data.data.message.length>0){
+          console.log("Positive")
+          // console.log(resp.data.data.message.length)
+          // console.log(resp.data.data.message)
+        }else{
+          console.log("Negative")
+
+          const resp = await axios.post(link2,data);
+        }
         // let customer = resp.data.data[0];
         console.log(resp)
       } catch (err) {
@@ -146,7 +158,7 @@ export default function DenseTable(props) {
       }
       // window.location.reload(true);
     };
-    sendValue(addLink,obj)
+    sendValue(addLink,addLink2 ,obj)
     console.log(obj)
 	};
 
@@ -174,6 +186,7 @@ export default function DenseTable(props) {
 		props.setApi(link);
 		console.log("Aikhane");
 		console.log(link);
+    props.setShowForm(true)
 	};
 	const deleteHandler = (e, rows) => {
 		props.setState(!props.State);

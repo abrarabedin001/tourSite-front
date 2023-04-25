@@ -18,6 +18,7 @@ export function CustBuys() {
 	const [Keys, setKeys] = useState([]);
 	const [State, setState] = useState(false);
 	const [apiClean, setApi] = useState(api2);
+	const [showForm , setShowForm] = useState(false);
 
 	const signIn = JSON.parse(localStorage.getItem("signIn"));
 
@@ -37,7 +38,7 @@ export function CustBuys() {
 			setData(res.data.data);
 		}
 		getData();
-	}, []);
+	}, [State]);
 	return (
 		<div>
 			<Table
@@ -48,6 +49,7 @@ export function CustBuys() {
 				setState={setState}
 				className=""
 				setApi={setApi}
+        setShowForm ={setShowForm}
 			/>
 			<div className="flex">
 				<Form
@@ -57,13 +59,14 @@ export function CustBuys() {
 					state={State}
 					setState={setState}
 				/>
-				<UpdateForm
+        {showForm&&<UpdateForm
 					api={apiClean}
 					toapi={toapi}
 					data={Data}
 					state={State}
 					setState={setState}
-				/>
+				/>}
+				
 			</div>
 		</div>
 	);
