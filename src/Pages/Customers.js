@@ -36,7 +36,7 @@ export function Customers() {
 			setData(res.data.data);
 		}
 		getData();
-	}, []);
+	}, [State]);
 	return (
 		<div>
 			<Table

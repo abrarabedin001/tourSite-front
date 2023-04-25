@@ -258,13 +258,13 @@ export default function DenseTable(props) {
 							))}
               <TableCell align="right">
 								{showAdd && (
-									<button
+									row["Availability"]?<button
 										className="p-2 m-2 bg-green-700 rounded-lg text-white font-bold"
 										// onClick={(e, rows) = addHandler(e, row)}
                     onClick={(e, rows) => addHandler(e, row)}
 									>
 										Add
-									</button>
+									</button>:" "
 								)}
 							</TableCell>
 							<TableCell align="right">
