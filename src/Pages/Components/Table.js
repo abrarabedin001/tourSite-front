@@ -17,6 +17,7 @@ export default function DenseTable(props) {
 	// props.State
 	// props.setState
 	//props.setApi
+  //props.setShowForm
 	let rows = props.Data;
 	let toapi = props.toapi;
 	let delapi = props.toapi;
@@ -25,6 +26,8 @@ export default function DenseTable(props) {
 	let ctx = useContext(UserContext);
 	let show = false;
 	let showUpdate = false;
+  let showAdd = false;
+
 	if (
 		signIn?.mode === "Admin" ||
 		(location === "/dependents" && signIn?.mode === "Customer") ||
@@ -52,6 +55,16 @@ export default function DenseTable(props) {
 	} else {
 		showUpdate = false;
 	}
+  if (
+		(signIn?.mode === "Admin" && location === "/Packages") ||
+		
+    (signIn?.mode === "Customer" && location === "/Packages")
+	) {
+		showAdd = true;
+	} else {
+		showAdd = false;
+	}
+  // showAdd
 
 	// console.log(rows)
 	const delValue = async (Id) => {
@@ -98,6 +111,56 @@ export default function DenseTable(props) {
 	};
   //DEALS WITH IDS AS THIRD PARAM
 
+  const addHandler = (e, rows) => {
+		console.log(rows);
+		console.log("running update handler");
+		let addLink = "http://localhost:3001/custbuystest" 
+		let addLink2 = "http://localhost:3001/custbuys" 
+    let Pid = rows["Id"]
+    // Cid, Pid, Start_date, End_date,Paid_unpaid
+
+    let Cid =  signIn.id
+    const d = new Date();
+
+  //   const MOMENT = require( 'moment' );
+  // let datetime = MOMENT().format( 'YYYY-MM-DD  HH:mm:ss.000' );
+    let Start_date = d.toISOString().slice(0, 19).split('T')[0];
+    let End_date = null
+    let Paid_unpaid = 0
+    let obj = {
+      "Cid":Cid,
+      "Pid":Pid,
+      "Start_date":Start_date,
+      "End_date":End_date,
+      "Paid_unpaid":Paid_unpaid
+    }
+    const sendValue = async (link1,link2,data) => {
+      try {
+        let link = link1 + "/" + data.Cid + "/" + data.Pid +"/"+data.Start_date;
+        console.log(link);
+        console.log("exp")
+        const resp = await axios.get(link);
+        console.log(resp)
+        if (resp.data.data.message.length>0){
+          console.log("Positive")
+          // console.log(resp.data.data.message.length)
+          // console.log(resp.data.data.message)
+        }else{
+          console.log("Negative")
+
+          const resp = await axios.post(link2,data);
+        }
+        // let customer = resp.data.data[0];
+        console.log(resp)
+      } catch (err) {
+        // Handle Error Here
+        console.error(err);
+      }
+      // window.location.reload(true);
+    };
+    sendValue(addLink,addLink2 ,obj)
+    console.log(obj)
+	};
 
 	const updateHandler = (e, rows) => {
 		console.log(rows);
@@ -123,6 +186,7 @@ export default function DenseTable(props) {
 		props.setApi(link);
 		console.log("Aikhane");
 		console.log(link);
+    props.setShowForm(true)
 	};
 	const deleteHandler = (e, rows) => {
 		props.setState(!props.State);
@@ -192,6 +256,17 @@ export default function DenseTable(props) {
 									
 								</TableCell>
 							))}
+              <TableCell align="right">
+								{showAdd && (
+									<button
+										className="p-2 m-2 bg-green-700 rounded-lg text-white font-bold"
+										// onClick={(e, rows) = addHandler(e, row)}
+                    onClick={(e, rows) => addHandler(e, row)}
+									>
+										Add
+									</button>
+								)}
+							</TableCell>
 							<TableCell align="right">
 								{showUpdate && (
 									<button

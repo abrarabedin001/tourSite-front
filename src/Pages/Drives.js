@@ -20,6 +20,7 @@ export function Drives() {
 	const [Keys, setKeys] = useState([]);
 	const [State, setState] = useState(false);
 	const [apiClean, setApi] = useState(api2);
+  const [showForm , setShowForm] = useState(false);
 
 	// const signIn = JSON.parse(localStorage.getItem("signIn"));
 
@@ -50,6 +51,8 @@ export function Drives() {
 				setState={setState}
 				className=""
 				setApi={setApi}
+        setShowForm ={setShowForm}
+
 			/>
 			<div className="flex">
 				<Form
@@ -59,13 +62,13 @@ export function Drives() {
 					state={State}
 					setState={setState}
 				/>
-				<UpdateForm
+				{showForm&&<UpdateForm
 					api={apiClean}
 					toapi={toapi}
 					data={Data}
 					state={State}
 					setState={setState}
-				/>
+				/>}
 			</div>
 		</div>
 	);

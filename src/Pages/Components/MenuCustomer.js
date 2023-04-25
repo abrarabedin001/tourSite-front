@@ -24,13 +24,13 @@ const pages = [
 		Dependents
 	</Link>,
 	<Link to="/CustBuys" className="no-underline">
-		CustBuys
+		Package Booking
 	</Link>,
 	<Link to="/CusBook" className="no-underline">
-		CusBook
+		Lodging Reservation
 	</Link>,
 	<Link to="/CusHire" className="no-underline">
-		CusHire
+		Vehicle Assigned
 	</Link>,
 
 	<Link to="/Packages" className="no-underline">
@@ -44,13 +44,13 @@ const pages = [
 		Vehicles
 	</Link>,
 	<Link to="/Accomodation" className="no-underline">
-		Accomodation
+		Lodging
 	</Link>,
 	<Link to="/AccBelongsTo" className="no-underline">
-		AccBelongsTo
+		Location lodging
 	</Link>,
 	<Link to="/PackageHas" className="no-underline">
-		PackageHas
+		Package locations
 	</Link>,
 ];
 const settings = [
@@ -62,13 +62,13 @@ const settings = [
 		Dependents
 	</Link>,
 	<Link to="/CustBuys" className="no-underline">
-		CustBuys
+		Package Booking
 	</Link>,
 	<Link to="/CusBook" className="no-underline">
-		CusBook
+		Lodging Reservation
 	</Link>,
 	<Link to="/CusHire" className="no-underline">
-		CusHire
+		Vehicle Assigned
 	</Link>,
 
 	<Link to="/Packages" className="no-underline">
@@ -82,13 +82,13 @@ const settings = [
 		Vehicles
 	</Link>,
 	<Link to="/Accomodation" className="no-underline">
-		Accomodation
+		Lodging
 	</Link>,
 	<Link to="/AccBelongsTo" className="no-underline">
-		AccBelongsTo
+		Location lodging
 	</Link>,
 	<Link to="/PackageHas" className="no-underline">
-		PackageHas
+		Package locations
 	</Link>,
 ];
 

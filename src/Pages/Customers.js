@@ -16,12 +16,13 @@ export function Customers() {
 	const [Keys, setKeys] = useState([]);
 	const [State, setState] = useState(false);
 	const [apiClean, setApi] = useState(api2);
+  const [showForm , setShowForm] = useState(false);
 
 	const signIn = JSON.parse(localStorage.getItem("signIn"));
 
 	useEffect(() => {
 		async function getData() {
-			if (signIn.mode === "Employee") {
+			if (signIn.mode === "Customer") {
 				// console.log("ki hoise");
 				console.log(signIn.id);
 				api = api + "/" + signIn.id;
@@ -46,6 +47,7 @@ export function Customers() {
 				setState={setState}
 				className=""
 				setApi={setApi}
+        setShowForm ={setShowForm}
 			/>
 			<div className="flex">
 				<Form
@@ -55,13 +57,13 @@ export function Customers() {
 					state={State}
 					setState={setState}
 				/>
-				<UpdateForm
+				{showForm&&<UpdateForm
 					api={apiClean}
 					toapi={toapi}
 					data={Data}
 					state={State}
 					setState={setState}
-				/>
+				/>}
 			</div>
 		</div>
 	);

@@ -57,7 +57,24 @@ export default function UpdateForm(props) {
 		const sHour = key.includes("hour");
     const password = key.includes("Password")
 		// const
-		if (date_input || date_input2) {
+    if(key==="Cid"&&signIn.mode==="Customer"){
+      return <div
+      key={key}
+      className="flex flex-col rounded mt-2 font-bold text-black"
+    >
+      <label htmlFor={key} className="w-full text-left pl-2">
+        {key}
+      </label>
+      <input
+        type="text"
+        id={key}
+        className="p-2 m-2 w-sm rounded"
+        // onChange={(e) => handleChange(e, key)}
+        placeholder="test"
+        value={Value[key]?Value[key]:""}
+      />
+    </div>
+    }else if (date_input || date_input2) {
 			return (
 				<div
 					key={key}
