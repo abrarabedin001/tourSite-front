@@ -23,10 +23,10 @@ export function PackageHas() {
       
       const res = await axios.get(api)
       // console.log(res.data.data)
-      setKeys(Object.keys(res.data.data[0]))
-      dataRef.current = res.data.data
+      setKeys(await Object.keys(await res.data.data[0]))
+      dataRef.current = await res.data.data
       
-      setData(res.data.data)
+      await setData(res.data.data)
       
      } 
      getData()

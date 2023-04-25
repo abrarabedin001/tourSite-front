@@ -193,9 +193,10 @@ export default function UpdateForm(props) {
 		// console.log("hurrah!!!");
 		// console.log(Value);
 		sendValue(Value);
-		// setTimeout(() => {
-		// 	window.location.reload(true);
-		// }, 1000);
+    props.setState(!props.State);
+		setTimeout(() => {
+			window.location.reload(true);
+		}, 500);
 
 		props.setState(!props.State);
 	};

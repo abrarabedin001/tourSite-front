@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Link, Route, Routes } from "react-router-dom";
+// import {useState} from "react";
+import { Link, Route, Routes,useLocation } from "react-router-dom";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -15,51 +16,65 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 // import AdbIcon from '@mui/icons-material/Adb';
 
+
+
 const pages = [
-	<Link className="no-underline" to="/customers">
-		Customers
-	</Link>,
 
-	<Link className="no-underline" to="/dependents">
-		Dependents
-	</Link>,
-	<Link to="/CusBook" className="no-underline">
-		Lodging Reservation
-	</Link>,
-	<Link to="/CusHire" className="no-underline">
-		Vehicle Assigned
-	</Link>,
-
-	<Link to="/Employees" className="no-underline">
-		Employees
-	</Link>,
-	<Link to="/Packages" className="no-underline">
-		Packages
-	</Link>,
-	<Link to="/Locations" className="no-underline">
-		Locations
-	</Link>,
-	<Link to="/Drives" className="no-underline">
-		Drives
-	</Link>,
-	<Link to="/Vehicles" className="no-underline">
-		Vehicles
-	</Link>,
-	<Link to="/Accomodation" className="no-underline">
-		Lodging
-	</Link>,
-	<Link to="/AccBelongsTo" className="no-underline">
-		Location lodging
-	</Link>,
-	<Link to="/EWorksIn" className="no-underline">
-		EWorksIn
-	</Link>,
-	<Link to="/CustBuys" className="no-underline">
-		Package Booking
-	</Link>,
-	<Link to="/PackageHas" className="no-underline">
-		Package locations
-	</Link>,
+	{link:"/customers",
+		label:"Customers"},
+   
+    {
+      link: "/dependents",
+      label: "Dependents"
+    },
+    {
+      link: "/CusBook",
+      label: "Lodging Reservation"
+    },
+    {
+      link: "/CusHire",
+      label: "Vehicle Assigned"
+    },
+    {
+      link: "/Employees",
+      label: "Employees"
+    },
+    {
+      link: "/Packages",
+      label: "Packages"
+    },
+    {
+      link: "/Locations",
+      label: "Locations"
+    },
+    {
+      link: "/Drives",
+      label: "Drives"
+    },
+    {
+      link: "/Vehicles",
+      label: "Vehicles"
+    },
+    {
+      link: "/Accomodation",
+      label: "Lodging"
+    },
+    {
+      link: "/AccBelongsTo",
+      label: "Location lodging"
+    },
+    {
+      link: "/EWorksIn",
+      label: "EWorksIn"
+    },
+    {
+      link: "/CustBuys",
+      label: "Package Booking"
+    },
+    {
+      link: "/PackageHas",
+      label: "Package locations"
+    }
 ];
 const settings = [
 	<Link className="no-underline" to="/customers">
@@ -107,10 +122,19 @@ const settings = [
 		Package locations
 	</Link>,
 ];
+// setLinkName(page.label)
+
 
 function ResponsiveAppBar() {
+  let location = useLocation().pathname;
 	const [anchorElNav, setAnchorElNav] = React.useState();
 	const [anchorElUser, setAnchorElUser] = React.useState();
+  let [active,setActive] = React.useState("")
+
+  let navOnClick = (label)=>{
+    console.log("nav link")
+    setActive(label)
+  }
 
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
@@ -131,90 +155,22 @@ function ResponsiveAppBar() {
 		<AppBar position="static">
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
-					{/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
-					{/* <Typography
-						variant="h6"
-						noWrap
-						component="a"
-						href="/"
-						sx={{
-							mr: 2,
-							display: { xs: "none", md: "flex" },
-							fontFamily: "monospace",
-							fontWeight: 700,
-							letterSpacing: ".3rem",
-							color: "inherit",
-							textDecoration: "none",
-						}}
-					>
-						LOGO
-					</Typography> */}
+				
 
-					<Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-						<Menu
-							id="menu-appbar"
-							anchorEl={anchorElNav}
-							anchorOrigin={{
-								vertical: "bottom",
-								horizontal: "left",
-							}}
-							keepMounted
-							transformOrigin={{
-								vertical: "top",
-								horizontal: "left",
-							}}
-							open={Boolean(anchorElNav)}
-							onClose={handleCloseNavMenu}
-							sx={{
-								display: { xs: "block", md: "none" },
-							}}
-						>
-							{pages.map((page) => (
-								<MenuItem key={page} onClick={handleCloseNavMenu}>
-									{/* <Typography textAlign="center">{page}</Typography> */}
-									{page}
-								</MenuItem>
-							))}
-						</Menu>
-					</Box>
-					{/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
-					{/* <Typography
-						variant="h5"
-						noWrap
-						component="a"
-						href=""
-						sx={{
-							mr: 2,
-							display: { xs: "flex", md: "none" },
-							flexGrow: 1,
-							fontFamily: "monospace",
-							fontWeight: 700,
-							letterSpacing: ".3rem",
-							color: "inherit",
-							textDecoration: "none",
-						}}
-					>
-						LOGO
-					</Typography> */}
-					<Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+					
+				
+        <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
 						{pages.map((page) => (
-							// <Button
-							//   key={page}
-							//   onClick={handleCloseNavMenu}
-							//   sx={{ my: 2, color: 'white', display: 'block' }}
-							// >
-							<div
-								className="p-2 m-2  trnasition hover:bg-blue-100 text-black font-bold duration-500  rounded"
-								key={page}
-							>
-								{page}
-							</div>
-
-							// </Button>
+							
+								<Link onClick={()=>{navOnClick(page.label)}} className={location===page.link?"bg-blue-900 p-2 hover:bg-blue-900 font-bold text-lg text-center":"bg-blue hover:bg-blue-900 p-2 font-bold text-lg text-center"} to={page.link}>
+                  {page.label}
+                  </Link>
+							
 						))}
-						{/* <button onClick={localStorage.removeItem("signIn") }> LOG OUT </button> */}
 					</Box>
+              {/* Settings */}
 
+            {/* Settings Menu */}
 					<Box sx={{ flexGrow: 0 }}>
 						<Tooltip title="Open settings">
 							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

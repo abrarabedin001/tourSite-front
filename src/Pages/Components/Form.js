@@ -155,10 +155,10 @@ export default function Form(props) {
 		console.log("hurrah!!!");
 		sendValue(Value);
 
-		props.setState(!props.State);
+		// props.setState(!props.State);
 		setTimeout(() => {
 			window.location.reload(true);
-		}, 1000);
+		}, 500);
 	};
 
 	if (signIn) {

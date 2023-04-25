@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes,useLocation } from "react-router-dom";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -16,6 +16,62 @@ import MenuItem from "@mui/material/MenuItem";
 // import AdbIcon from '@mui/icons-material/Adb';
 
 const pages = [
+
+
+   
+  {
+    link: "/Employees",
+    label: "Employees"
+  },
+  {
+    link: "/EWorksIn",
+    label: "EWorksIn"
+  },
+    {
+      link: "/CusBook",
+      label: "Lodging Reservation"
+    },
+    {
+      link: "/CusHire",
+      label: "Vehicle Assigned"
+    },
+   
+    {
+      link: "/Packages",
+      label: "Packages"
+    },
+    {
+      link: "/Locations",
+      label: "Locations"
+    },
+    {
+      link: "/Vehicles",
+      label: "Vehicles"
+    },
+    {
+      link: "/Drives",
+      label: "Drives"
+    },
+    
+    {
+      link: "/Accomodation",
+      label: "Lodging"
+    },
+    {
+      link: "/AccBelongsTo",
+      label: "Location lodging"
+    },
+  
+    {
+      link: "/CustBuys",
+      label: "Package Booking"
+    },
+    {
+      link: "/PackageHas",
+      label: "Package locations"
+    }
+];
+const pages2 = [
 	<Link to="/Employees" className="no-underline">
 		Employees
 	</Link>,
@@ -70,8 +126,15 @@ const settings = [
 	</Link>,
 ];
 function ResponsiveAppBar() {
+  let location = useLocation().pathname;
 	const [anchorElNav, setAnchorElNav] = React.useState();
 	const [anchorElUser, setAnchorElUser] = React.useState();
+  let [active,setActive] = React.useState("")
+
+  let navOnClick = (label)=>{
+    console.log("nav link")
+    setActive(label)
+  }
 
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
@@ -92,86 +155,17 @@ function ResponsiveAppBar() {
 		<AppBar position="static">
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
-					{/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
-					{/* <Typography
-						variant="h6"
-						noWrap
-						component="a"
-						href="/"
-						sx={{
-							mr: 2,
-							display: { xs: "none", md: "flex" },
-							fontFamily: "monospace",
-							fontWeight: 700,
-							letterSpacing: ".3rem",
-							color: "inherit",
-							textDecoration: "none",
-						}}
-					>
-						LOGO
-					</Typography> */}
-
-					<Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-						<Menu
-							id="menu-appbar"
-							anchorEl={anchorElNav}
-							anchorOrigin={{
-								vertical: "bottom",
-								horizontal: "left",
-							}}
-							keepMounted
-							transformOrigin={{
-								vertical: "top",
-								horizontal: "left",
-							}}
-							open={Boolean(anchorElNav)}
-							onClose={handleCloseNavMenu}
-							sx={{
-								display: { xs: "block", md: "none" },
-							}}
-						>
-							{pages.map((page) => (
-								<MenuItem key={page} onClick={handleCloseNavMenu}>
-									{/* <Typography textAlign="center">{page}</Typography> */}
-									{page}
-								</MenuItem>
-							))}
-						</Menu>
-					</Box>
-					{/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
-					<Typography
-						variant="h5"
-						noWrap
-						component="a"
-						href=""
-						sx={{
-							mr: 2,
-							display: { xs: "flex", md: "none" },
-							flexGrow: 1,
-							fontFamily: "monospace",
-							fontWeight: 700,
-							letterSpacing: ".3rem",
-							color: "inherit",
-							textDecoration: "none",
-						}}
-					>
-						LOGO
-					</Typography>
-					<Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+					
+        <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
 						{pages.map((page) => (
-							// <Button
-							//   key={page}
-							//   onClick={handleCloseNavMenu}
-							//   sx={{ my: 2, color: 'white', display: 'block' }}
-							// >
-							<div
-								className="p-2 m-2  trnasition hover:bg-blue-100 text-black font-bold duration-500  rounded"
-								key={page}
-							>
-								{page}
-							</div>
+							
+								<Link onClick={()=>{navOnClick(page.label)}} className={location===page.link?"bg-blue-900 p-2 hover:bg-blue-900 font-bold text-lg text-center":"bg-blue hover:bg-blue-900 p-2 font-bold text-lg text-center"} to={page.link}>
+                  {page.label}
+                  </Link>
+							
 						))}
 					</Box>
+              {/* Settings */}
 
 					<Box sx={{ flexGrow: 0 }}>
 						<Tooltip title="Open settings">
