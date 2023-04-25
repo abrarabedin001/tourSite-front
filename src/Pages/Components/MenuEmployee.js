@@ -26,7 +26,7 @@ const pages = [
 		Packages
 	</Link>,
 	<Link to="/Locations" className="no-underline">
-		Locations
+		Lodging
 	</Link>,
 	<Link to="/Drives" className="no-underline">
 		Drives
@@ -36,21 +36,24 @@ const pages = [
 	</Link>,
 
 	<Link to="/CustBuys" className="no-underline">
-		CustBuys
+		Package Booking
 	</Link>,
 	<Link to="/PackageHas" className="no-underline">
-		PackageHas
+		Package locations
 	</Link>,
 ];
 const settings = [
 	<Link to="/Employees" className="no-underline">
 		Employees
 	</Link>,
+	<Link to="/EWorksIn" className="no-underline">
+		EWorksIn
+	</Link>,
 	<Link to="/Packages" className="no-underline">
 		Packages
 	</Link>,
 	<Link to="/Locations" className="no-underline">
-		Locations
+		Lodging
 	</Link>,
 	<Link to="/Drives" className="no-underline">
 		Drives
@@ -59,14 +62,11 @@ const settings = [
 		Vehicles
 	</Link>,
 
-	<Link to="/EWorksIn" className="no-underline">
-		EWorksIn
-	</Link>,
 	<Link to="/CustBuys" className="no-underline">
-		CustBuys
+		Package Booking
 	</Link>,
 	<Link to="/PackageHas" className="no-underline">
-		PackageHas
+		Package locations
 	</Link>,
 ];
 function ResponsiveAppBar() {
