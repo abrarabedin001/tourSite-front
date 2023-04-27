@@ -22,9 +22,8 @@ export function CusBook() {
 				api = api + "/" + signIn.id;
 				console.log(api);
 			}
-
 		  const res = await axios.get(api);
-			// console.log(res.data.data)
+		
 			await setKeys(await Object.keys(await res.data.data[0]));
 			dataRef.current = await res.data.data;
 
@@ -34,16 +33,17 @@ export function CusBook() {
 	}, [State]);
 	return (
 		<div>
+      {/* Props */}
 			<Table
-				Data={Data}
-				keys={Keys}
-				toapi={toapi}
+				Data={Data} // rows
+				keys={Keys} //column name
+				toapi={toapi} //api link
 				state={State}
 				setState={setState}
 				className=""
 			/>
 			<Form
-				api={api}
+				api={api} 
 				toapi={toapi}
 				data={Data}
 				state={State}
