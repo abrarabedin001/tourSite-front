@@ -130,19 +130,21 @@ export default function DenseTable(props) {
 
   //   const MOMENT = require( 'moment' );
   // let datetime = MOMENT().format( 'YYYY-MM-DD  HH:mm:ss.000' );
-    let Start_date = d.toISOString().slice(0, 19).split('T')[0];
+    let Booking_date = d.toISOString().slice(0, 19).split('T')[0];
+	let Start_date=null
     let End_date = null
     let Paid_unpaid = 0
     let obj = {
       "Cid":Cid,
       "Pid":Pid,
+	  "Booking_date":Booking_date,
       "Start_date":Start_date,
       "End_date":End_date,
       "Paid_unpaid":Paid_unpaid
     }
     const sendValue = async (link1,link2,data) => {
       try {
-        let link = link1 + "/" + data.Cid + "/" + data.Pid +"/"+data.Start_date;
+        let link = link1 + "/" + data.Cid + "/" + data.Pid +"/"+data.Booking_date;
         console.log(link);
         console.log("exp")
         const resp = await axios.get(link);
@@ -184,7 +186,7 @@ export default function DenseTable(props) {
 			link = props.toapi + "All/" + rows["Id"];
 		}
     else if(location === "/CustBuys"){
-			link = props.toapi + "All/" + rows["Cid"]+"/"+rows["Pid"]+"/"+rows["Start_date"].split("T")[0];
+			link = props.toapi + "All/" + rows["Cid"]+"/"+rows["Pid"]+"/"+rows["Booking_date"].split("T")[0];
 		}
     else if(location === "/Vehicles"){
 			link = props.toapi + "All/" + rows["License"];
@@ -221,7 +223,7 @@ export default function DenseTable(props) {
 		} else if (packages_has) {
 			delValues(rows["Lid"], rows["Pid"]);
 		} else if (customebuys) {
-			delValues2(rows["Cid"], rows["Pid"],rows["Start_date"]);
+			delValues2(rows["Cid"], rows["Pid"],rows["Booking_date"]);
 		} else if (dependents) {
 			delValues(rows["Cid"], rows["Dname"]);
 		} else if (eworksIn) {
