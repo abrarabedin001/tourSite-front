@@ -25,6 +25,7 @@ export default function SignUp(props) {
 	useEffect(() => {
 		async function getData() {
 			const res = await axios.get(api);
+			//console.log(Data)
 			setKeys(Object.keys(res.data.data[0]));
 		}
 		getData();
@@ -174,3 +175,23 @@ export default function SignUp() {
     </div>
   );
 }
+
+
+
+
+// import {useState} from 'react';
+
+// const App = () => {
+//   const [names, setNames] = useState(['bobby', 'hadz', 'alice']);
+
+//   // ✅ Check if array contains string
+//   if (names.includes('bobby')) {
+//     console.log('✅ array contains string');
+//   }
+
+//   // ✅ Check if array contains string on click
+//   const handleClick = () => {
+//     if (names.includes('bobby')) {
+//       console.log('✅ array contains string');
+//     }
+//   };
