@@ -54,7 +54,7 @@ export default function Form(props) {
         id={key}
         className="p-2 m-2 w-sm rounded"
         // onChange={(e) => handleChange(e, key)}
-        placeholder="test"
+        placeholder={key}
         value={signIn.id}
       />
     </div>
@@ -69,7 +69,7 @@ export default function Form(props) {
 						id={key}
 						className="p-2 m-2 w-sm rounded"
 						onChange={(e) => handleChange(e, key)}
-						placeholder="test"
+						placeholder={key}
 					/>
 				</div>
 			);
@@ -87,7 +87,7 @@ export default function Form(props) {
 						id={key}
 						className="p-2 m-2 w-sm rounded"
 						onChange={(e) => handleChange(e, key)}
-						placeholder="test"
+						placeholder={key}
 						value={Value[key]?Value[key].split("T")[0]:""}
 					/>
 				</div>
@@ -107,7 +107,7 @@ export default function Form(props) {
 						defaultValue=""
 						className="p-2 m-2 w-sm rounded"
 						onChange={(e) => handleChange(e, key)}
-						placeholder="test"
+						placeholder={key}
 					/>
 				</div>
 			);
@@ -125,7 +125,7 @@ export default function Form(props) {
 						id={key}
 						className="p-2 m-2 w-sm rounded"
 						onChange={(e) => handleChange(e, key)}
-						placeholder="test"
+						placeholder={key}
 					/>
 				</div>
 			);
