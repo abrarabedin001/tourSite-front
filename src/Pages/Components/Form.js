@@ -11,6 +11,8 @@ export default function Form(props) {
 	const api = props.api + "All";
 	let component = " ";
 	let location = useLocation().pathname;
+  const d = new Date();
+  let Booking_date = d.toISOString().slice(0, 19).split('T')[0];
 
 	//props.toapi
 	// props.data
@@ -41,7 +43,24 @@ export default function Form(props) {
 		const sHour = key.includes("hour");
 		const password = key.includes("Password");
 		// const
-		if(key==="Cid"&&signIn.mode==="Customer"){
+		if(key==="Paid_unpaid"&&signIn.mode==="Customer"){
+    //   return <div
+    //   key={key}
+    //   className="flex flex-col rounded mt-2 font-bold text-black"
+    // >
+    //   <label htmlFor={key} className="w-full text-left pl-2">
+    //     {key}
+    //   </label>
+    //   <input
+    //     type="text"
+    //     id={key}
+    //     className="p-2 m-2 w-sm rounded"
+    //     // onChange={(e) => handleChange(e, key)}
+    //     placeholder="test"
+    //     value={Value[key]?Value[key]:""}
+    //   />
+    // </div>
+    }else if(key==="Cid"&&signIn.mode==="Customer"){
       return <div
       key={key}
       className="flex flex-col rounded mt-2 font-bold text-black"
@@ -59,20 +78,46 @@ export default function Form(props) {
       />
     </div>
     }else if (date_input || date_input2) {
-			return (
-				<div key={index} className="flex flex-col rounded mt-2 text-black">
-					<label htmlFor={key} className="w-full text-left pl-2">
-						{key}
-					</label>
-					<input
-						type="date"
-						id={key}
-						className="p-2 m-2 w-sm rounded"
-						onChange={(e) => handleChange(e, key)}
-						placeholder={key}
-					/>
-				</div>
-			);
+			if (key==="Booking_date"){
+        let date = new Date().toLocaleString()
+        return (
+          <div
+            key={key}
+            className="flex flex-col rounded mt-2 font-bold text-black"
+          >
+            <label htmlFor={key} className="w-full text-left pl-2">
+              {key}
+            </label>
+            <input
+              type="date"
+              id={key}
+              className="p-2 m-2 w-sm rounded"
+              onChange={(e) => handleChange(e, key)}
+              placeholder="test"
+              value={Booking_date.split(" ")[0]}
+            />
+          </div>
+        );
+      }else{
+        return (
+          <div
+            key={key}
+            className="flex flex-col rounded mt-2 font-bold text-black"
+          >
+            <label htmlFor={key} className="w-full text-left pl-2">
+              {key}
+            </label>
+            <input
+              type="date"
+              id={key}
+              className="p-2 m-2 w-sm rounded"
+              onChange={(e) => handleChange(e, key)}
+              placeholder="test"
+              value={Value[key]?Value[key].split("T")[0]:""}
+            />
+          </div>
+        );
+      }
 		} else if (password){
       return (
 				<div
@@ -153,9 +198,17 @@ export default function Form(props) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log("hurrah!!!");
-		sendValue(Value);
+    if(location==="/CustBuys"&&signIn.mode==="Customer"){
+      console.log("inside handle submit")
+      let Value2 = {...Value,Cid:signIn.id,Booking_date:Booking_date.split(" ")[0],Paid_unpaid:"0"}
+      console.log(Value2)
+      sendValue(Value2);
+    }else{
+      sendValue(Value);
+    }
+		
 
-		// props.setState(!props.State);
+		props.setState(!props.State);
 		setTimeout(() => {
 			window.location.reload(true);
 		}, 500);
