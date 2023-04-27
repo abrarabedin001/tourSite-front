@@ -135,3 +135,42 @@ export default function SignUp(props) {
 		</div>
 	);
 }
+
+
+
+
+//Validate an Email in an Input field
+
+
+export default function SignUp() {
+
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState(null);
+
+  function isValidEmail(email) {
+    return /\S+@\S+\.\S+/.test(email);
+  }
+
+  const handleChange = event => {
+    if (!isValidEmail(event.target.value)) {
+      setError('Email is invalid');
+    } else {
+      setError(null);
+    }
+
+    setEmail(event.target.value);
+  };
+
+  return (
+    <div>
+      <input
+        id="email"
+        name="email"
+        value={email}
+        onChange={handleChange}
+      />
+
+      {error && <h2 style={{color: 'red'}}>{error}</h2>}
+    </div>
+  );
+}
