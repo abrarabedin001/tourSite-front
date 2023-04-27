@@ -18,10 +18,14 @@ export default function DenseTable(props) {
 	// props.setState
 	//props.setApi
   //props.setShowForm
+  // props.Data 
+  // localhost:3001/customer
+  // localhost:3001/customer
 	let rows = props.Data;
 	let toapi = props.toapi;
 	let delapi = props.toapi;
-	const signIn = JSON.parse(localStorage.getItem("signIn"));
+  // admin?customer?employee
+	const signIn = JSON.parse(localStorage.getItem("signIn")); 
 	let location = useLocation().pathname;
 	let ctx = useContext(UserContext);
 	let show = false;
@@ -55,8 +59,8 @@ export default function DenseTable(props) {
 	} else {
 		showUpdate = false;
 	}
+
   if (
-		(signIn?.mode === "Admin" && location === "/Packages") ||
 		
     (signIn?.mode === "Customer" && location === "/Packages")
 	) {
@@ -69,6 +73,8 @@ export default function DenseTable(props) {
 	// console.log(rows)
 	const delValue = async (Id) => {
 		try {
+  // localhost:3001/customer/03
+
 			let link = delapi + "/" + Id;
 			console.log(link);
 			const resp = await axios.delete(link);
@@ -207,7 +213,7 @@ export default function DenseTable(props) {
 			console.log(rows);
 			delValues(rows["Aid"], rows["Pid"]);
 		} else if (drives) {
-			delValues(rows["Emp_id"], rows["Vlicense"]);
+			delValues2(rows["Emp_id"], rows["Vlicense"],rows["date"]);
 		} else if (vehicles) {
 			delValue(rows["License"]);
 		} else if (receipts) {
@@ -221,7 +227,7 @@ export default function DenseTable(props) {
 		} else if (eworksIn) {
 			delValues(rows["Lid"], rows["Emp_id"]);
 		} else if (cushire) {
-			delValues(rows["Cid"], rows["Vlicense"]);
+			delValues2(rows["Cid"], rows["Vlicense"],rows["date"]);
 		} else if (cusbook) {
 			delValues2(rows["Cid"], rows["Aid"],rows["Date"]);
 		} else {
@@ -252,7 +258,7 @@ export default function DenseTable(props) {
 						>
 							{props.keys.map((key,ind) => (
 								<TableCell component="th" scope="row" >
-                  {(key.includes("Date")||key.includes("date"))&&row[key]?row[key].split("T")[0] :row[key]}
+                  {(key.includes("Date")||key.includes("date"))&&row[key]? row[key].split("T")[0] :row[key]}
 									
 								</TableCell>
 							))}
