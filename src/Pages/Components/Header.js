@@ -108,8 +108,8 @@ function Header() {
 					<LoginFormCustomer setVisible={setVisible} /></div>}
 					{logIn&&<div className="flex justify-center flex-row"><CustomerSignUp setVisible={setVisible} /></div>}
           <div className="flex justify-center flex-row">
-          {!logIn&&<button className="w-[200px] h-[90px] rounded font-bold text-2xl bg-blue-600" onClick={()=>handleSignUp()}>Sing Up</button>}
-          {logIn&&<button className="w-[200px] h-[90px] rounded font-bold text-2xl bg-blue-600" onClick={()=>handleSignIn()}>Sing In</button>}
+          {!logIn&&<button className="w-[200px] h-[90px] rounded font-bold text-2xl bg-blue-600" onClick={()=>handleSignUp()}>Sign Up</button>}
+          {logIn&&<button className="w-[200px] h-[90px] rounded font-bold text-2xl bg-blue-600" onClick={()=>handleSignIn()}>Sign In</button>}
           </div>
 				</div>
         
