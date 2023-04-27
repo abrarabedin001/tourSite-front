@@ -73,7 +73,7 @@ export default function LoginForm(props) {
 						ref={IdRef}
 						id="Id"
 						className="p-2 m-2 w-sm rounded"
-						placeholder="test"
+						placeholder="Id"
 					/>
 				</div>
 				<div
@@ -88,7 +88,7 @@ export default function LoginForm(props) {
 						type="password"
 						id="password"
 						className="p-2 m-2 w-sm rounded"
-						placeholder="test"
+						placeholder="password"
 					/>
 				</div>
 				<button
