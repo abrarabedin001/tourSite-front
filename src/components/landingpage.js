@@ -18,7 +18,7 @@ const Landingpage = () => {
             </div>
 
             <div className="home-text">
-                <h1>The Bubu Island</h1>
+                <h1>Welcome Travelling Around The World</h1>
                 <p>Come live out your ideal vacation with us</p>
             </div>
 
