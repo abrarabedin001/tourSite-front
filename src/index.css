@@ -24,8 +24,9 @@ code {
 
 
 @tailwind base; 
-@tailwind components; 
 
+@tailwind components;
+ 
 @tailwind utilities;
 
 
@@ -37,7 +38,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(29, 4, 126);
+  /* background-color: rgb(29, 4, 126); */
 }
 
 code {
