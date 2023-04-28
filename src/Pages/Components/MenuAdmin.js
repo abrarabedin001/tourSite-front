@@ -20,8 +20,10 @@ import MenuItem from "@mui/material/MenuItem";
 
 const pages = [
 
-	{link:"/customers",
-		label:"Customers"},
+	{
+	 link:"/customers",
+	 label:"Customers"
+	},
    
     {
       link: "/dependents",
