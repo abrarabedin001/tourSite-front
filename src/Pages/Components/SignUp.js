@@ -257,15 +257,40 @@ export default function SignUp(props) {
 		}
 	};
 
+
 	const sendValue = async (data) => {
 		try {
+			const duplicate = Data.some((d) => {
+				return Object.keys(d).every((key) => d[key] === data[key]);
+			});
+	
+			if (duplicate) {
+				alert("Duplicate value found in the database!");
+				return;
+			}
+	
 			const resp = await axios.post(toapi, data);
 			console.log(resp.data);
+	
+			props.setState(!props.State);
+			setTimeout(() => {
+				window.location.reload(true);
+			}, 1000);
 		} catch (err) {
-			// Handle Error Here
 			console.error(err);
+			alert("Error: Could not submit the form. Please try again later.");
 		}
 	};
+
+	// const sendValue = async (data) => {
+	// 	try {
+	// 		const resp = await axios.post(toapi, data);
+	// 		console.log(resp.data);
+	// 	} catch (err) {
+	// 		// Handle Error Here
+	// 		console.error(err);
+	// 	}
+	// };
 
 	let handleChange = (e, key) => {
 		console.log(e.target.value);
