@@ -115,14 +115,16 @@ export default function CustomerSignUpForm(props) {
 	};
 
 	const sendValue = async (data) => {
-    let objLength = Object.keys(Value)
+    
     try {
-      console.log("topai in sendValue")
-      console.log(toapi)
-      console.log(Value.Id)
+      // console.log("topai in sendValue")
+      // console.log(toapi)
+      // console.log(Value.Id)
+      //localhost:3001/customer
       let toapi2 = toapi+"/"+Value.Id
-      console.log("topai in sendValue")
-      console.log(toapi2)
+      //localhost:3001/customer/01
+      // console.log("topai in sendValue")
+      // console.log(toapi2)
 			const resp = await axios.get(toapi2);
       console.log("response:")
 			let length = resp.data.data.length
@@ -138,8 +140,13 @@ export default function CustomerSignUpForm(props) {
 			// Handle Error Here
 			console.error(err);
 		}
+    let objLength = Object.keys(Value).length
+    console.log(objLength)
+
     if(objLength===7){
       setError(false)
+      console.log(Value.Password)
+      
       try {
         const resp = await axios.post(toapi, data);
         console.log(resp.data);
