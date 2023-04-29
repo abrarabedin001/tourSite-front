@@ -19,7 +19,7 @@ const Landingpage = () => {
 
             <div className="home-text">
                 <h1>Welcome Travelling Around The World</h1>
-                <p>Come live out your ideal vacation with us</p>
+                {/* <p>Come live out your ideal vacation with us</p> */}
             </div>
 
             {/* <div className="home-btn">Explore</div> */}
