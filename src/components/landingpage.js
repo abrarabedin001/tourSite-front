@@ -9,7 +9,7 @@ const Landingpage = () => {
             <video src={BgVideo} autoPlay muted loop class="video-bg" />
             <div className="bg-overlay"></div>
 
-            {/* <div className="navbar">
+            <div className="navbar">
                 <div className="menu">
                     <div></div>
                     <div></div>
@@ -22,7 +22,7 @@ const Landingpage = () => {
                 <p>Come live out your ideal vacation with us</p>
             </div>
 
-            <div className="home-btn">Explore</div> */}
+            {/* <div className="home-btn">Explore</div> */}
 
         </div>
     )
