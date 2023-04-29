@@ -26,12 +26,12 @@ export function Drives() {
 
 	useEffect(() => {
 		async function getData() {
-			// if (signIn.mode === "Employee") {
-			// 	// console.log("ki hoise");
-			// 	console.log(signIn.id);
-			// 	api = api + "/" + signIn.id;
-			// 	console.log(api);
-			// }
+			if (signIn.mode === "Employee") {
+				// console.log("ki hoise");
+				console.log(signIn.id);
+				api = api + "/" + signIn.id;
+				console.log(api);
+			}
 			const res = await axios.get(api);
 			// console.log(res.data.data)
 			await setKeys(await Object.keys(await res.data.data[0]));
