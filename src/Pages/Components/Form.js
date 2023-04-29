@@ -193,25 +193,34 @@ export default function Form(props) {
 		console.log(key);
 		obj[key] = e.target.value;
 		setValue({ ...Value, ...obj });
+    console.log("handle change")
 		console.log(Value);
 	};
 	const handleSubmit = (e) => {
-		e.preventDefault();
+	
+    
+    e.preventDefault();
 		console.log("hurrah!!!");
     if(location==="/CustBuys"&&signIn.mode==="Customer"){
       console.log("inside handle submit")
-      let Value2 = {...Value,Cid:signIn.id,Booking_date:Booking_date.split(" ")[0],Paid_unpaid:"0"}
+      let Value2 = {...Value,Cid:signIn.id,Booking_date:Value["Booking_date"],Paid_unpaid:Value["Paid_unpaid"]}
       console.log(Value2)
       sendValue(Value2);
-    }else{
+    }else if( location==="/dependents" && signIn.mode==="Customer"){
+      console.log("inside handle submit")
+      let Value2 = {...Value,Cid:signIn.id}
+      console.log(Value2)
+      sendValue(Value2);
+    }
+    else{
       sendValue(Value);
     }
 		
 
-		props.setState(!props.State);
-		setTimeout(() => {
-			window.location.reload(true);
-		}, 500);
+		// props.setState(!props.State);
+		// setTimeout(() => {
+		// 	window.location.reload(true);
+		// }, 500);
 	};
 
 	if (signIn) {
