@@ -11,7 +11,7 @@
 
 .landingpage {
     width: 100%;
-    height: 100vh;
+    height: 0vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,7 +39,7 @@
     z-index: 0;
 }
 
-.navbar {
+/* .navbar {
     width: 100%;
     height: 6em;
     border-bottom: 2px solid white;
@@ -70,7 +70,7 @@
     border-radius: 1em;
 }
 
-.menu div:nth-of-type(2) {width: 40%;}
+.menu div:nth-of-type(2) {width: 40%;} */
 
 .home-text {
     width: 70%;
@@ -117,4 +117,3 @@ p {
         opacity: 1;
     }
 }
-
