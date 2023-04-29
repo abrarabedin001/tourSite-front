@@ -52,7 +52,7 @@
     z-index: 1;
 }
 
-.menu {
+/* .menu {
     height: 3em;
     width: 4em;
     display: flex;
@@ -70,9 +70,9 @@
     border-radius: 1em;
 }
 
-.menu div:nth-of-type(2) {width: 40%;}
+.menu div:nth-of-type(2) {width: 40%;} */
 
-.home-text {
+/* .home-text {
     width: 70%;
     height: 40%;
     display: flex;
@@ -91,7 +91,7 @@ h1 {
 p {
     justify-self: flex-end;
     font-size: 2em;
-}
+} */
 
 .home-btn {
     width: 6em;

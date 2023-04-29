@@ -10,11 +10,11 @@ const Landingpage = () => {
             <div className="bg-overlay"></div>
 
             <div className="navbar">
-                <div className="menu">
+                {/* <div className="menu">
                     <div></div>
                     <div></div>
                     <div></div>
-                </div>
+                </div> */}
             </div>
 
             {/* <div className="home-text">
