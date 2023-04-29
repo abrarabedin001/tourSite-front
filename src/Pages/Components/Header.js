@@ -90,7 +90,7 @@ function Header() {
 					</Container>
 
 					<button
-						className="w-[120px] bg-white p-3 m-3 font-bold"
+						className="w-[120px] bg-black p-3 m-3 font-bold"
 						onClick={handleLogOut}
 					>
 						Log out

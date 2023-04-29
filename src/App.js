@@ -11,14 +11,25 @@
 // export default App;
 
 import Header from "./Pages/Components/Header";
-
+import Landingpage from "./components/landingpage";
 
 function App() {
-
-
-	return <>
-  <Header />
-  </>;
+  return (
+    <div className="App">
+      <Landingpage />
+	    <Header />
+    </div>
+  );
 }
 
 export default App;
+
+// function App() {
+
+
+// 	return <>
+//   <Header />
+//   </>;
+// }
+
+// export default App;
