@@ -12,6 +12,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
   /* background-color: rgba(31, 42, 30, 0.867); */
   /* background-image: url("./nature.jpg"); */
   background-image: linear-gradient(
@@ -19,7 +20,9 @@ body {
     rgba(65, 65, 40, 0.583),
     rgba(66, 48, 13, 0.496)
   ), url("./nature.jpg");
+
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

@@ -171,6 +171,7 @@ export default function DenseTable(props) {
 	};
 
 	const updateHandler = (e, rows) => {
+    
 		console.log(rows);
 		console.log("running update handler");
 		let link = " ";
@@ -197,9 +198,17 @@ export default function DenseTable(props) {
     props.setShowForm(true)
 	};
 	const deleteHandler = (e, rows) => {
-		props.setState(!props.State);
+    console.log("state of state")
+    console.log(props.state)
+    if(props.state==="e"){
+      props.setState("j");
+    }else{
+      props.setState("e");
+    }
+
+
 		// let col_name = rows.object.key()
-		console.log(props.to);
+		
 		let acc_belongsTo = props.toapi.includes("/accBelongTo");
 		let drives = props.toapi.includes("/drives");
 		let vehicles = props.toapi.includes("/vehicles");

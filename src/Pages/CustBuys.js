@@ -16,7 +16,7 @@ export function CustBuys() {
 	const dataRef = useRef([]);
 	const [Data, setData] = useState([]);
 	const [Keys, setKeys] = useState([]);
-	const [State, setState] = useState(false);
+	const [State, setState] = useState("false");
 	const [apiClean, setApi] = useState(api2);
 	const [showForm , setShowForm] = useState(false);
 
