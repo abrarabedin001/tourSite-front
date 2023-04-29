@@ -22,7 +22,7 @@ const Landingpage = () => {
                 <p>Come live out your ideal vacation with us</p>
             </div>
 
-            <div className="home-btn">Explore</div>
+            {/* <div className="home-btn">Explore</div> */}
 
         </div>
     )
