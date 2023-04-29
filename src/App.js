@@ -5,7 +5,9 @@ function App() {
 	// 	console.log(ctx.mode);
 	// }, [ctx.mode]);
 
-	return <Header />;
+	return <>
+  <Header />
+  </>;
 }
 
 export default App;
