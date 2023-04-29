@@ -32,7 +32,7 @@ const pages = [
     },
     {
       link: "/CusBook",
-      label: "Lodging Reservation"
+      label: "Hotel Reservation"
     },
     {
       link: "/CusHire",
@@ -49,11 +49,11 @@ const pages = [
     },
     {
       link: "/Accomodation",
-      label: "Lodging"
+      label: "Hotels"
     },
     {
       link: "/AccBelongsTo",
-      label: "Location lodging"
+      label: "Package Hotels"
     },   
     {
       link: "/PackageHas",
