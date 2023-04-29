@@ -1,6 +1,6 @@
 import React from "react";
 import './landingpage.css'
-import BgVideo from '../media/bg.mp4'
+import BgVideo from '../media/bgu.mp4'
 
 const Landingpage = () => {
     return (
