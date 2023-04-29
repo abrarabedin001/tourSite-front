@@ -222,10 +222,10 @@ export default function Form(props) {
     }
 		
 
-		// props.setState(!props.State);
-		// setTimeout(() => {
-		// 	window.location.reload(true);
-		// }, 500);
+		props.setState(!props.State);
+		setTimeout(() => {
+			window.location.reload(true);
+		}, 500);
 	};
 
 	if (signIn) {
