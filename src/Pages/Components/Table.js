@@ -176,7 +176,7 @@ export default function DenseTable(props) {
 		console.log("running update handler");
 		let link = " ";
 		if (location === "/EWorksIn") {
-			link = props.toapi + "All/" + rows["Lid"] + "/" + rows["Emp_id"];
+			link = props.toapi + "All/" + rows["Lid"] + "/" + rows["Emp_id"]+"/"+rows["Date"];
 		} else if (location === "/customers") {
 			link = props.toapi + "All/" + rows["Id"];
 		} else if (location === "/dependents") {
