@@ -193,6 +193,7 @@ export default function Form(props) {
 		console.log(key);
 		obj[key] = e.target.value;
 		setValue({ ...Value, ...obj });
+    console.log("handle change")
 		console.log(Value);
 	};
 	const handleSubmit = (e) => {
@@ -216,10 +217,10 @@ export default function Form(props) {
     }
 		
 
-		props.setState(!props.State);
-		setTimeout(() => {
-			window.location.reload(true);
-		}, 500);
+		// props.setState(!props.State);
+		// setTimeout(() => {
+		// 	window.location.reload(true);
+		// }, 500);
 	};
 
 	if (signIn) {
