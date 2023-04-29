@@ -22,6 +22,7 @@ export default function CustomerSignUpForm(props) {
 	const [Value, setValue] = useState({});
 	const [Data, setData] = useState([]);
 	const [Keys, setKeys] = useState([]);
+	const [Error, setError] = useState(false);
 
 	let obj = {};
 	useEffect(() => {
@@ -30,7 +31,7 @@ export default function CustomerSignUpForm(props) {
 			setKeys(Object.keys(res.data.data[0]));
 		}
 		getData();
-	}, []);
+	}, [Error]);
 
 	const fieldChecker = (key) => {
 		const date_input = key.includes("date");
@@ -114,13 +115,43 @@ export default function CustomerSignUpForm(props) {
 	};
 
 	const sendValue = async (data) => {
-		try {
-			const resp = await axios.post(toapi, data);
-			console.log(resp.data);
+    let objLength = Object.keys(Value)
+    try {
+      console.log("topai in sendValue")
+      console.log(toapi)
+      console.log(Value.Id)
+      let toapi2 = toapi+"/"+Value.Id
+      console.log("topai in sendValue")
+      console.log(toapi2)
+			const resp = await axios.get(toapi2);
+      console.log("response:")
+			let length = resp.data.data.length
+      
+      
+      if (length===1){
+        setError(true)
+        return 0}
+
+
 		} catch (err) {
+      
 			// Handle Error Here
 			console.error(err);
 		}
+    if(objLength===7){
+      setError(false)
+      try {
+        const resp = await axios.post(toapi, data);
+        console.log(resp.data);
+      } catch (err) {
+        // Handle Error Here
+        console.error(err);
+      }
+    }
+    else{
+      setError(true)
+    }
+		
 	};
 
 	let handleChange = (e, key) => {
@@ -134,11 +165,13 @@ export default function CustomerSignUpForm(props) {
 		e.preventDefault();
 		console.log("hurrah!!!");
 		sendValue(Value);
-
-		props.setState(!props.State);
-		setTimeout(() => {
-			window.location.reload(true);
-		}, 1000);
+    // if(Error===false){
+    //   // props.setState(!props.State);
+    //   setTimeout(() => {
+    //     window.location.reload(true);
+    //   }, 1000);
+    // }
+		
 	};
 
 	return (
@@ -154,7 +187,10 @@ export default function CustomerSignUpForm(props) {
 					>
 						Submit
 					</button>
+          {Error&&<p className="bg-rose-900 p-3 font-bold">This Id might already exist Or other Error</p>}
+          
 				</form>
+
 			</div>
 		</div>
 	);
