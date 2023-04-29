@@ -12,7 +12,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(29, 4, 126);
+  /* background-color: rgb(29, 4, 126); */
+  background-image: url("./pictures/pexels-pixabay-326055.jpg");
+}
+.updateForm{
+  /* background-image: url("./pictures/pexels-ave-calvar-martinez-4279017.jpg"); */
+
 }
 
 code {
