@@ -8,7 +8,7 @@ import UpdateForm from "./Components/UpdateForm";
 
 import axios from 'axios';
 
-const api = "http://localhost:3001/drives"
+let api = "http://localhost:3001/drives"
 let api2 = "http://localhost:3001/drivesAll";
 
 const toapi = "http://localhost:3001/drives"
@@ -26,11 +26,22 @@ export function Drives() {
 
 	useEffect(() => {
 		async function getData() {
-			if (signIn.mode === "Employee") { 
+      // console.log("Inside drive1");
+			// if (signIn.mode === "Employee") { 
+			// 	console.log("Inside drive2");
+			// 	console.log(signIn.id);
+			// 	api = api + "/" + signIn.id;
+      //   console.log(api)
+			// 	console.log(api);
+			// }
+			// const res = await axios.get(api);
+
+
+      if (signIn.mode === "Employee") {
 				// console.log("ki hoise");
-				console.log(signIn.id);
+				// console.log(signIn.id);
 				api = api + "/" + signIn.id;
-				console.log(api);
+				// console.log(api);
 			}
 			const res = await axios.get(api);
 			// console.log(res.data.data)
