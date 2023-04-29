@@ -13,12 +13,12 @@ const Landingpage = () => {
                 <div className="menu">
                     <div></div>
                     <div></div>
-                    <div></div>
+                    {/* <div><h1>Welcome To Travel Around The World</h1></div> */}
                 </div>
             </div>
 
             <div className="home-text">
-                <h1>Welcome Travelling Around The World</h1>
+                {/* <h4>Welcome Travelling Around The World</h4> */}
                 {/* <p>Come live out your ideal vacation with us</p> */}
             </div>
 
