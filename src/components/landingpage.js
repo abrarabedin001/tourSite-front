@@ -9,13 +9,13 @@ const Landingpage = () => {
             <video src={BgVideo} autoPlay muted loop class="video-bg" />
             <div className="bg-overlay"></div>
 
-            {/* <div className="navbar"> */}
+            <div className="navbar">
                 <div className="menu">
                     <div></div>
                     <div></div>
                     <div></div>
                 </div>
-            {/* </div> */}
+            </div>
 
             <div className="home-text">
                 <h1>Welcome Travelling Around The World</h1>
