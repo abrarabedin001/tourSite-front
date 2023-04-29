@@ -203,7 +203,12 @@ export default function Form(props) {
 		console.log("hurrah!!!");
     if(location==="/CustBuys"&&signIn.mode==="Customer"){
       console.log("inside handle submit")
-      let Value2 = {...Value,Cid:signIn.id,Booking_date:Value["Booking_date"],Paid_unpaid:Value["Paid_unpaid"]}
+      let Value2 = {...Value,Cid:signIn.id,Booking_date:Booking_date,Paid_unpaid:Value["Paid_unpaid"]}
+      console.log(Value2)
+      sendValue(Value2);
+    }else if(location==="/CustBuys"&&signIn.mode==="Admin"){
+      console.log("inside admin handle submit")
+      let Value2 = {...Value,Booking_date:Booking_date}
       console.log(Value2)
       sendValue(Value2);
     }else if( location==="/dependents" && signIn.mode==="Customer"){
